@@ -1,0 +1,45 @@
+body{
+	background-color: #3A3A3A;
+}
+h1{
+	text-align:center;
+}
+
+#form{
+	width: 100%;
+	/*overflow: hidden;*/
+	margin: auto;
+	max-width: 200px;
+	min-width: 100px;
+}
+
+.boton{
+	 text-decoration: none;
+    padding: 8px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+}
+
+.boton:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+  }
+
+  .texto{
+  	border: 1px dotted #999;
+  	border-radius: 0;
+  	-webkit-appearance: none;
+
+  }
+
+#error{
+    color: green;
+    font-family: monospace;
+    border: 1px dashed blue;
+    padding:  4px;
+    display: none;
+    }
