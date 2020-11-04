@@ -15,10 +15,17 @@ if(count($_POST)> 0){
 	if(!isset($_POST['usuario'])) die("error ini 1");
 	if(!isset($_POST['pass'])) die("error ini 2");
 
-	$in->IniciarSesion($_POST['usuario'], $_POST['pass'] );
+	$in->IniciarSesion($_POST['usuario'], $_POST['pass']);
 
-	$v = header("Location: PantallaProductos.php");
-	
+	if(!isset($_SESSION['logueado'])){
+		header("Location: iniciosesion.php");
+		exit;
+	}
+	else {
+		header("Location: Home.php");
+		exit;
+	}
+	//$v = header("Location: PantallaProductos.php");
 
 }else{
 	$v = new Login();

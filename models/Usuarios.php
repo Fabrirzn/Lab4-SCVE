@@ -63,12 +63,12 @@ class Usuarios extends Model{
 
 		$this->db->query("SELECT * FROM usuario WHERE usuario = '$usuario' and password = '$password' LIMIT 1");
 
-			if(!$this->db->numRows() == 1 ){
+			if($this->db->numRows() == 1 ){
 			$_SESSION['logueado'] = true;
 			$fila = $this->db->fetch();
 			$_SESSION['usuario'] = $fila['usuario'];
 			//header("Location: PantallaProductos.php");
-			exit;
+			//exit;
 		}
 
 	}
