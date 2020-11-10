@@ -21,7 +21,7 @@
 					<a href="#" class="dropdown-item">Mis Ventas</a>
 					<a href="#" class="dropdown-item">Mi Pefil</a>
 					<div class="dropdown-divider"></div>
-					<a href="#" class="dropdown-item">Cerrar Sesion</a>
+					<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
 				</div>		
 			  </nav>						
 		</header>
