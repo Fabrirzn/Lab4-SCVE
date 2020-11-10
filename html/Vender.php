@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+	<title>Vender</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 
@@ -10,7 +9,7 @@
 		<header>
 			<nav class="navbar navbar-light bg-light">
 				<a class="navbar-brand" href="#">
-				  
+				 
 				  SCVE
 				</a>
 				<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" 
@@ -30,19 +29,35 @@
 		
 		<div id="buscador">
 			<input type="text" class="form-control" id="" placeholder="Busque Algo">
+
 		</div>
 		
-		<div class="container-fluid">
-				<table>
-					<tr><th>Foto</th><th>Nombre</th> <th>precio</th></tr>
+		<div class="container-fluid" align="center" >
 
-						<?php foreach($this->productos as $p) { ?>
-							<tr><th><?= $p['fotos'] ?></th><th><?= $p['nombre'] ?> </th><th> $ <?= $p['precio'] ?> </th> <th><input type="submit" value="Comprar" class="boton"></th></tr>
-							<?php } ?>
 
-</table>
+			<form action="" method="post" enctype="multipart/form-data">
+				<label>Nombre</label>
+				<input type="text" name="nombre-producto">	<br /> <br />
+				<label>Descripcion</label>
+				<input type="text" name="descripcion"> <br /> <br />
+				<label>Precio</label>
+				<input type="text" name="precio"> <br /> <br />
+				<label>Foto</label>
+				<input type="file"  id="prd_foto1" name="prd_foto1"><br /> <br />
+
+				<input type="submit" value="Vender" class="boton">
+
+
+
+			</form>
+
+
+
+
 		</div>
 
+
+		
 
 		<footer class="page-footer font-small blue fixed-bottom">
   			<div class="footer-copyright text-center m-3">© 2020 Copyright:

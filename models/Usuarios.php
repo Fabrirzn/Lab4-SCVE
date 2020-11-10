@@ -72,4 +72,15 @@ class Usuarios extends Model{
 		}
 
 	}
+
+		public function existeUsuario($uid){
+		/*if(!ctype_digit($uid)) return false;
+		if($uid < 1) return false;*/
+
+		$this->db->query("SELECT * FROM usuario WHERE usuario = '$uid'");
+
+		if($this->db->numRows() != 1) return false;
+
+		return true;
+	}
 }
