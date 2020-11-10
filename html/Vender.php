@@ -8,8 +8,7 @@
 <body>
 		<header>
 			<nav class="navbar navbar-light bg-light">
-				<a class="navbar-brand" href="#">
-				 
+				<a class="navbar-brand" href="Home.php">				 
 				  SCVE
 				</a>
 				<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" 
@@ -27,36 +26,27 @@
 			  </nav>						
 		</header>
 		
-		<div id="buscador">
-			<input type="text" class="form-control" id="" placeholder="Busque Algo">
 
-		</div>
-		
-		<div class="container-fluid" align="center" >
-
-
-			<form action="" method="post" enctype="multipart/form-data">
-				<label>Nombre</label>
-				<input type="text" name="nombre-producto">	<br /> <br />
-				<label>Descripcion</label>
-				<input type="text" name="descripcion"> <br /> <br />
-				<label>Precio</label>
-				<input type="text" name="precio"> <br /> <br />
-				<label>Foto</label>
-				<input type="file"  id="prd_foto1" name="prd_foto1"><br /> <br />
-
-				<input type="submit" value="Vender" class="boton">
-
-
-
+			<form action="PantallaVentas.php" method="post" class="mt-5 p-5" enctype="multipart/form-data">
+				<div class="form-group text-center">
+					<label for="nombre-producto">Nombre</label>
+					<input type="text" id="nombre-producto" name="nombre-producto" class="form-control small">
+					<label for="descripcion">Descripcion</label>
+					<input type="text" id="descripcion" name="descripcion" class="form-control small"> 
+					<label for="precio">Precio</label>
+					<input type="text" id="precio" name="precio" class="form-control small"> 
+					<br>
+					<label>Foto</label>
+					<br>
+					<br>
+					<input type="file"  id="prd_foto1" name="prd_foto1" class="text-center">
+					<br>
+					<br>
+					<input type="submit" value="Vender" class="btn btn-success">
+				</div>
 			</form>
 
-
-
-
-		</div>
-
-
+	
 		
 
 		<footer class="page-footer font-small blue fixed-bottom">
