@@ -5,7 +5,6 @@
 class Vender extends View {
 
 	public $usuario;
-	public $foto;
 	
 }
 

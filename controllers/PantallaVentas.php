@@ -19,7 +19,7 @@ require '../views/AltaProductoOk.php';
 	}
 
 
-	//$e = new Usuarios();
+	$e = new Usuarios();
 
 	if(count($_POST) > 0){
 
@@ -31,7 +31,6 @@ require '../views/AltaProductoOk.php';
 		if(!isset($_POST['descripcion'])) die("error Pantalla Producto 2");
 		if(!isset($_POST['precio'])) die("error Pantalla Producto 3");
 		//if (is_uploaded_file($_FILES["prd_foto1"]["tmp_name"]))  die("error Pantalla Producto 4");
-		//$foto = addslashes( file_get_contents( $_FILE['prd_foto1']['tmp_name']));
 		$foto =  $_FILES['prd_foto1'];
 		if(!isset($foto)) die("error 4");
 
@@ -39,7 +38,6 @@ require '../views/AltaProductoOk.php';
 
 		$v = new AltaProductoOk();
 	}
-
 $v->render();
 
 

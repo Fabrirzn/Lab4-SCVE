@@ -35,16 +35,26 @@ class Usuarios extends Model{
 		$direccion = $_POST['Direccion'];
 
 		if(strlen($_POST['Contrasenia']) < 1) die("error usuario 9"); 
-		$contrasenia = substr($_POST['Contrasenia'], 0, 50);
+		$_POST['Contrasenia'] = substr($_POST['Contrasenia'], 0, 50);
 		//$_POST['Contrasenia'] = mysqli_escape_string($_POST['Contrasenia']);
-		//$contrasenia = $_POST['Contrasenia'];
-		//$contrasenia = md5('$contrasenia');
+		$contrasenia = $_POST['Contrasenia'];
 
+		$contra = md5($contrasenia);
 
+		if(strlen($_POST['Contrasenia2']) < 1) die("error usuario 10"); 
+		$_POST['Contrasenia2'] = substr($_POST['Contrasenia2'], 0, 50);
+		//$_POST['Contrasenia'] = mysqli_escape_string($_POST['Contrasenia']);
+		$Contrasenia2 = $_POST['Contrasenia2'];
 
+		$contra2 = md5($contrasenia);
 
-		$this->db->query("INSERT INTO usuario (nombre, apellido, usuario, dni, telefono, direccion, password) 
-										VALUES ('$nombre', '$apellido', '$usuario', '$dni', '$telefono', '$direccion', '$contrasenia')");
+		if($contra == $contra2){
+
+			$this->db->query("INSERT INTO usuario (nombre, apellido, usuario, dni, telefono, direccion, password) 
+											VALUES ('$nombre', '$apellido', '$usuario', '$dni', '$telefono', '$direccion', '$contra')");
+		}else{
+			echo "las contraseñas no coinciden ";
+		}	
 	}
 
 	public function IniciarSesion ($usuario, $contr){
@@ -52,17 +62,17 @@ class Usuarios extends Model{
 		session_start();
 		
 		if(strlen($_POST['usuario']) < 1) die("error usuario sesion 1 "); 
-		$usuario = substr($usuario, 0, 50);
+		$_POST['usuario'] = substr($_POST['usuario'], 0, 50);
 	//	$_POST['usuario'] = mysqli_escape_string($_POST['usuario']);
-		//$usuario = $_POST['usuario'];
+		$usuario = $_POST['usuario'];
 
 		if(strlen($_POST['pass']) < 1) die("error usuario sesion 2"); 
-		$contr = substr($_POST['pass'], 0, 50);
+		$_POST['pass'] = substr($_POST['pass'], 0, 50);
 	//	$_POST['pass'] = mysqli_escape_string($_POST['pass']);
-		//$password = $_POST['pass'];
-		//$contr = md5('$password');
+		$password = $_POST['pass'];
+		$pass = md5($password);
 
-		$this->db->query("SELECT * FROM usuario WHERE usuario = '$usuario' and password = '$contr' LIMIT 1");
+		$this->db->query("SELECT * FROM usuario WHERE usuario = '$usuario' and password = '$pass' LIMIT 1");
 
 			if($this->db->numRows() == 1 ){
 			$_SESSION['logueado'] = true;
@@ -83,11 +93,5 @@ class Usuarios extends Model{
 		if($this->db->numRows() != 1) return false;
 
 		return true;
-	}
-
-	public function getIdUsuario($nombreUsuario){
-		$this->db->query("SELECT id_usuario FROM usuario WHERE  usuario = '$nombreUsuario'");
-		$aux = $this->db->fetch();
-		return $aux['id_usuario'];
 	}
 }

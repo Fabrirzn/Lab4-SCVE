@@ -9,7 +9,8 @@
 <body>
 		<header>
 			<nav class="navbar navbar-light bg-light">
-				<a class="navbar-brand" href="Home.php">  
+				<a class="navbar-brand" href="#">
+				  
 				  SCVE
 				</a>
 				<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" 
@@ -17,12 +18,12 @@
 					Hola <?= $_SESSION['usuario'] ?>
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownBoton">
-					<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
+					<a href="PantallaVentas" class="dropdown-item">Vender</a>
 					<a href="#" class="dropdown-item">Mis Compras</a>
 					<a href="#" class="dropdown-item">Mis Ventas</a>
 					<a href="#" class="dropdown-item">Mi Pefil</a>
 					<div class="dropdown-divider"></div>
-					<a href="#" class="dropdown-item">Cerrar Sesion</a>
+					<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
 				</div>		
 			  </nav>						
 		</header>
@@ -34,42 +35,16 @@
 		<div class="row">
 				<div class="col-sm-12 col-md-12 col-lg-3 text-center">
 					<div class="img-fluid">
-						<img src="../img/jpg/lenovo-storage-tape-family.png">
-						<p>Nombre</p>
-						<p>Precio</p>
-						<button class="btn btn-success">COMPRAR</button>
+						<?php foreach($this->productos as $p) { ?>
+						<img width="100" class="Img-thumbnail" src="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>">
+						<p><?= $p['nombre'] ?></p>
+						<p>$ <?= $p['precio'] ?></p>
+						<button class="btn btn-success">COMPRAR</button><br/>
 					</div>
 				</div>
-				<div class="col-sm-12 col-md-12 col-lg-3 text-center">
-					<div class="img-fluid">
-						<img src="../img/jpg/lenovo-storage-tape-family.png">
-						<p>Nombre</p>
-						<p>Precio</p>
-						<button class="btn btn-success">COMPRAR</button>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md-12 col-lg-3 text-center">
-					<div class="img-fluid">
-						<img src="../img/jpg/lenovo-storage-tape-family.png">
-						<p>Nombre</p>
-						<p>Precio</p>
-						<button class="btn btn-success">COMPRAR</button>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md-12 col-lg-3 text-center">
-					<div class="img-fluid">
-						<img src="../img/jpg/lenovo-storage-tape-family.png">
-						<p>Nombre</p>
-						<p>Precio</p>
-						<button class="btn btn-success">COMPRAR</button>
-					</div>
+				<?php } ?>
 				</div>
 			</div>
-
-						<!--<?php foreach($this->productos as $p) { ?>
-							<tr><th><?= $p['fotos'] ?></th><th><?= $p['nombre'] ?> </th><th> $ <?= $p['precio'] ?> </th> <th><input type="submit" value="Comprar" class="boton"></th></tr>
-							<?php } ?>-->
-
 
 
 		<footer class="page-footer font-small blue fixed-bottom">
