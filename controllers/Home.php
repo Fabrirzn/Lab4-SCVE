@@ -23,9 +23,12 @@ $todos = $p->getTodos();
 
 $v = new Home();
 $v->productos = $todos;
+<<<<<<< Updated upstream
 
 
 
+=======
+>>>>>>> Stashed changes
 $v->render();
 
 

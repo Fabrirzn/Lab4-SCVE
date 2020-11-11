@@ -37,14 +37,29 @@ class Usuarios extends Model{
 		if(strlen($_POST['Contrasenia']) < 1) die("error usuario 9"); 
 		$contrasenia = substr($_POST['Contrasenia'], 0, 50);
 		//$_POST['Contrasenia'] = mysqli_escape_string($_POST['Contrasenia']);
+<<<<<<< Updated upstream
 		//$contrasenia = $_POST['Contrasenia'];
 		//$contrasenia = md5('$contrasenia');
+=======
+		$contrasenia = $_POST['Contrasenia'];
 
+		$contra = md5($contrasenia);
+>>>>>>> Stashed changes
 
+		if(strlen($_POST['Contrasenia2']) < 1) die("error usuario 10"); 
+		$_POST['Contrasenia2'] = substr($_POST['Contrasenia2'], 0, 50);
+		//$_POST['Contrasenia'] = mysqli_escape_string($_POST['Contrasenia']);
+		$Contrasenia2 = $_POST['Contrasenia2'];
 
+		$contra2 = md5($contrasenia);
 
-		$this->db->query("INSERT INTO usuario (nombre, apellido, usuario, dni, telefono, direccion, password) 
-										VALUES ('$nombre', '$apellido', '$usuario', '$dni', '$telefono', '$direccion', '$contrasenia')");
+		if($contra == $contra2){
+
+			$this->db->query("INSERT INTO usuario (nombre, apellido, usuario, dni, telefono, direccion, password) 
+											VALUES ('$nombre', '$apellido', '$usuario', '$dni', '$telefono', '$direccion', '$contra')");
+		}else{
+			echo "las contraseñas no coinciden ";
+		}	
 	}
 
 	public function IniciarSesion ($usuario, $contr){
@@ -59,10 +74,17 @@ class Usuarios extends Model{
 		if(strlen($_POST['pass']) < 1) die("error usuario sesion 2"); 
 		$contr = substr($_POST['pass'], 0, 50);
 	//	$_POST['pass'] = mysqli_escape_string($_POST['pass']);
+<<<<<<< Updated upstream
 		//$password = $_POST['pass'];
 		//$contr = md5('$password');
 
 		$this->db->query("SELECT * FROM usuario WHERE usuario = '$usuario' and password = '$contr' LIMIT 1");
+=======
+		$password = $_POST['pass'];
+		$pass = md5($password);
+
+		$this->db->query("SELECT * FROM usuario WHERE usuario = '$usuario' and password = '$pass' LIMIT 1");
+>>>>>>> Stashed changes
 
 			if($this->db->numRows() == 1 ){
 			$_SESSION['logueado'] = true;
@@ -84,10 +106,13 @@ class Usuarios extends Model{
 
 		return true;
 	}
+<<<<<<< Updated upstream
 
 	public function getIdUsuario($nombreUsuario){
 		$this->db->query("SELECT id_usuario FROM usuario WHERE  usuario = '$nombreUsuario'");
 		$aux = $this->db->fetch();
 		return $aux['id_usuario'];
 	}
+=======
+>>>>>>> Stashed changes
 }
