@@ -3,27 +3,17 @@
 <html>
 <head>
 	<title>Home</title>
-	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
 		<header>
 			<nav class="navbar navbar-light bg-light">
-				<a class="navbar-brand" href="Home.php">  
+				<a class="navbar-brand" href="#">
+				  <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
 				  SCVE
 				</a>
-				<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" 
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
-					Hola <?= $_SESSION['usuario'] ?>
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownBoton">
-					<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
-					<a href="#" class="dropdown-item">Mis Compras</a>
-					<a href="#" class="dropdown-item">Mis Ventas</a>
-					<a href="#" class="dropdown-item">Mi Pefil</a>
-					<div class="dropdown-divider"></div>
-					<a href="#" class="dropdown-item">Cerrar Sesion</a>
-				</div>		
+				<button class="btn btn-info">Hola <?= $_SESSION['usuario'] ?></button>		
 			  </nav>						
 		</header>
 		
@@ -31,45 +21,9 @@
 			<input type="text" class="form-control" id="" placeholder="Busque Algo">
 		</div>
 		
-		<div class="row">
-				<div class="col-sm-12 col-md-12 col-lg-3 text-center">
-					<div class="img-fluid">
-						<img src="../img/jpg/lenovo-storage-tape-family.png">
-						<p>Nombre</p>
-						<p>Precio</p>
-						<button class="btn btn-success">COMPRAR</button>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md-12 col-lg-3 text-center">
-					<div class="img-fluid">
-						<img src="../img/jpg/lenovo-storage-tape-family.png">
-						<p>Nombre</p>
-						<p>Precio</p>
-						<button class="btn btn-success">COMPRAR</button>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md-12 col-lg-3 text-center">
-					<div class="img-fluid">
-						<img src="../img/jpg/lenovo-storage-tape-family.png">
-						<p>Nombre</p>
-						<p>Precio</p>
-						<button class="btn btn-success">COMPRAR</button>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md-12 col-lg-3 text-center">
-					<div class="img-fluid">
-						<img src="../img/jpg/lenovo-storage-tape-family.png">
-						<p>Nombre</p>
-						<p>Precio</p>
-						<button class="btn btn-success">COMPRAR</button>
-					</div>
-				</div>
-			</div>
+		<div class="container-fluid">
 
-						<!--<?php foreach($this->productos as $p) { ?>
-							<tr><th><?= $p['fotos'] ?></th><th><?= $p['nombre'] ?> </th><th> $ <?= $p['precio'] ?> </th> <th><input type="submit" value="Comprar" class="boton"></th></tr>
-							<?php } ?>-->
-
+		</div>
 
 
 		<footer class="page-footer font-small blue fixed-bottom">

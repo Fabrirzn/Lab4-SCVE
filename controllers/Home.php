@@ -5,7 +5,6 @@
 
 require '../framework/framework.php';
 require '../models/Usuarios.php';
-require '../models/Productos.php';
 require '../views/Login.php';
 require '../views/Home.php';
 
@@ -16,15 +15,6 @@ require '../views/Home.php';
 	else {
 		$v = new Home();
 	}
-
-
-$p = new Productos();
-$todos = $p->getTodos();
-
-$v = new Home();
-$v->productos = $todos;
-
-
 
 $v->render();
 

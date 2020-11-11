@@ -5,7 +5,6 @@
 class Home extends View {
 
 	public $usuario;
-	public $productos;
 	
 }
 
