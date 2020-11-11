@@ -17,9 +17,8 @@ if (count($_POST)>0){
 	if(!isset($_POST['Telefono'])) die("error altausuario 5");
 	if(!isset($_POST['Direccion'])) die("error altausuario 6");
 	if(!isset($_POST['Contrasenia'])) die("error altausuario 7");
-	if(!isset($_POST['Contrasenia2'])) die("error altausuario 8");
 
-	$us->crearUsuario($_POST['Nombre'], $_POST['Apellido'], $_POST['Usuario'], $_POST['DNI'], $_POST['Telefono'], $_POST['Direccion'], $_POST['Contrasenia'], $_POST['Contrasenia2']  );
+	$us->crearUsuario($_POST['Nombre'], $_POST['Apellido'], $_POST['Usuario'], $_POST['DNI'], $_POST['Telefono'], $_POST['Direccion'], $_POST['Contrasenia']  );
 
 	$v = new AltaUsuarioOk();
 

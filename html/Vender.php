@@ -8,12 +8,7 @@
 <body>
 		<header>
 			<nav class="navbar navbar-light bg-light">
-<<<<<<< Updated upstream
 				<a class="navbar-brand" href="Home.php">				 
-=======
-				<a class="navbar-brand" href="#">
-				 
->>>>>>> Stashed changes
 				  SCVE
 				</a>
 				<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" 
@@ -31,7 +26,6 @@
 			  </nav>						
 		</header>
 		
-<<<<<<< Updated upstream
 
 			<form action="PantallaVentas.php" method="post" class="mt-5 p-5" enctype="multipart/form-data">
 				<div class="form-group text-center">
@@ -53,38 +47,6 @@
 			</form>
 
 	
-=======
-		<div id="buscador">
-			<input type="text" class="form-control" id="" placeholder="Busque Algo">
-
-		</div>
-		
-		<div class="container-fluid" align="center" >
-
-
-			<form action="" method="post" enctype="multipart/form-data">
-				<label>Nombre</label>
-				<input type="text" name="nombre-producto">	<br /> <br />
-				<label>Descripcion</label>
-				<input type="text" name="descripcion"> <br /> <br />
-				<label>Precio</label>
-				<input type="text" name="precio"> <br /> <br />
-				<label>Foto</label>
-				<input type="file"  id="prd_foto1" name="prd_foto1"><br /> <br />
-
-				<input type="submit" value="Vender" class="boton">
-
-
-
-			</form>
-
-
-
-
-		</div>
-
-
->>>>>>> Stashed changes
 		
 
 		<footer class="page-footer font-small blue fixed-bottom">
