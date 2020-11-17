@@ -4,49 +4,66 @@
 
 class Usuarios extends Model{
 
-	public function crearUsuario ($nombre, $apellido, $usuario, $dni, $telefono, $direccion, $contrasenia){
+	public function crearUsuario ($nombre, $apellido, $usuario, $dni, $telefono, $direccion, $contrasenia, $Contrasenia2){
 
-		if(strlen($_POST['Nombre']) < 1) die("error usuario 1"); //asumo un javascript del lado cliente que hace esto
-		$_POST['Nombre'] = substr($_POST['Nombre'], 0, 50);
-		//$_POST['Nombre'] = mysqli_escape_string($_POST['Nombre']);
-		$nombre = $_POST['Nombre'];
+		$nombre = substr($nombre, 0, 50);
+		$nombre = $this->db->escape($nombre);
+		$nombre = str_replace("%", "\%", $nombre);
+		$nombre = str_replace("_", "\_", $nombre);
 
-		if(strlen($_POST['Apellido']) < 1) die("error usuario 2"); 
-		$_POST['Apellido'] = substr($_POST['Apellido'], 0, 50);
-	//	$_POST['Apellido'] = mysqli_escape_string($_POST['Apellido']);
-		$apellido = $_POST['Apellido'];
+		$apellido = substr($apellido, 0, 50);
+		$apellido = $this->db->escape($apellido);
+		$apellido = str_replace("%", "\%", $apellido);
+		$apellido = str_replace("_", "\_", $apellido);
 
-		if(strlen($_POST['Usuario']) < 1) die("error usuario 3"); 
-		$_POST['Usuario'] = substr($_POST['Usuario'], 0, 50);
-		//$_POST['Usuario'] = mysqli_escape_string($_POST['Usuario']);
-		$usuario = $_POST['Usuario'];
+		$usuario = substr($usuario, 0, 50);
+		$usuario = $this->db->escape($usuario);
+		$usuario = str_replace("%", "\%", $usuario);
+		$usuario = str_replace("_", "\_", $usuario);
 
-		if(!is_numeric($_POST['DNI'])) die("error usuario 4");
-			if($_POST['DNI'] < 1) die("error usuario 5");
-			$dni = $_POST['DNI'];
+		if(!ctype_digit($dni)){
+			$error = 'El DNI debe ser un numero.';
+			return $error;
+		}
 
-		if(!is_numeric($_POST['Telefono'])) die("error usuario 6");
-			if($_POST['Telefono'] < 1) die("error usuario 7");
-			$telefono = $_POST['Telefono'];
+		if(strlen($dni) != 8){
+			$error = 'El DNI debe tener 8 digitos';
+			return $error;
+		}
 
-		if(strlen($_POST['Direccion']) < 1) die("error usuario 8"); 
-		$_POST['Direccion'] = substr($_POST['Direccion'], 0, 50);
-		//$_POST['Direccion'] = mysqli_escape_string($_POST['Direccion']);
-		$direccion = $_POST['Direccion'];
+		if(!ctype_digit($telefono)){
+			$error = 'El telefono debe ser un numero';
+			return $error;
+		}
 
-		if(strlen($_POST['Contrasenia']) < 1) die("error usuario 9"); 
-		$_POST['Contrasenia'] = substr($_POST['Contrasenia'], 0, 50);
-		//$_POST['Contrasenia'] = mysqli_escape_string($_POST['Contrasenia']);
-		$contrasenia = $_POST['Contrasenia'];
+		if(strlen($telefono) < 7 ){
+			$error = 'El telefono tiene que tener mas de 7 digitos ';
+			return $error;
+		}
+
+		if(strlen($telefono) > 13 ){
+			$error = 'El telefono tiene que tener menos de 13 digitos';
+			return $error;
+		}
+
+		$direccion = substr($direccion, 0, 50);
+		$direccion = $this->db->escape($direccion);
+		$direccion = str_replace("%", "\%", $direccion);
+		$direccion = str_replace("_", "\_", $direccion);
+
+		$contrasenia = substr($contrasenia, 0, 50);
+		$contrasenia = $this->db->escape($contrasenia);
+		$contrasenia = str_replace("%", "\%", $contrasenia);
+		$contrasenia = str_replace("_", "\_", $contrasenia);
 
 		$contra = md5($contrasenia);
 
-		if(strlen($_POST['Contrasenia2']) < 1) die("error usuario 10"); 
-		$_POST['Contrasenia2'] = substr($_POST['Contrasenia2'], 0, 50);
-		//$_POST['Contrasenia'] = mysqli_escape_string($_POST['Contrasenia']);
-		$Contrasenia2 = $_POST['Contrasenia2'];
+		$Contrasenia2 = substr($Contrasenia2, 0, 50);
+		$Contrasenia2 = $this->db->escape($Contrasenia2);
+		$Contrasenia2 = str_replace("%", "\%", $Contrasenia2);
+		$Contrasenia2 = str_replace("_", "\_", $Contrasenia2);
 
-		$contra2 = md5($contrasenia);
+		$contra2 = md5($Contrasenia2);
 
 		if($contra == $contra2){
 
@@ -61,15 +78,15 @@ class Usuarios extends Model{
 
 		session_start();
 		
-		if(strlen($_POST['usuario']) < 1) die("error usuario sesion 1 "); 
-		$_POST['usuario'] = substr($_POST['usuario'], 0, 50);
-	//	$_POST['usuario'] = mysqli_escape_string($_POST['usuario']);
-		$usuario = $_POST['usuario'];
+		$usuario = substr($usuario, 0, 50);
+		$usuario = $this->db->escape($usuario);
+		$usuario = str_replace("%", "\%", $usuario);
+		$usuario = str_replace("_", "\_", $usuario);
 
-		if(strlen($_POST['pass']) < 1) die("error usuario sesion 2"); 
-		$_POST['pass'] = substr($_POST['pass'], 0, 50);
-	//	$_POST['pass'] = mysqli_escape_string($_POST['pass']);
-		$password = $_POST['pass'];
+		$password = substr($password, 0, 50);
+		$password = $this->db->escape($password);
+		$password = str_replace("%", "\%", $password);
+		$password = str_replace("_", "\_", $password);
 		$pass = md5($password);
 
 		$this->db->query("SELECT * FROM usuario WHERE usuario = '$usuario' and password = '$pass' LIMIT 1");

@@ -10,20 +10,22 @@ class Productos extends Model{
 		echo $usuarioid;
 		if(!$usuarioaux->existeUsuario($usuarioid)) die("error Productos 1"); 
 
-		if(strlen($_POST['nombre-producto']) < 1) die("error Productos 2"); 
-		$_POST['nombre-producto'] = substr($_POST['nombre-producto'], 0, 50);
-		//$_POST['Nombre'] = mysqli_escape_string($_POST['Nombre']);
-		$nombre = $_POST['nombre-producto'];
+		$nombre = substr($nombre, 0, 50);
+		$nombre = $this->db->escape($nombre);
+		$nombre = str_replace("%", "\%", $nombre);
+		$nombre = str_replace("_", "\_", $nombre);
 
 
-		if(strlen($_POST['descripcion']) < 1) die("error Productos 3"); 
-		$_POST['descripcion'] = substr($_POST['descripcion'], 0, 50);
-		//$_POST['Nombre'] = mysqli_escape_string($_POST['Nombre']);
-		$descripcion = $_POST['descripcion'];
-		echo $precio;
-		if(!is_numeric($_POST['precio'])) die("error Productos 4");
-			if($_POST['precio'] < 1) die("error Productos 5");
-			$precio = $_POST['precio'];
+		$descripcion = substr($descripcion, 0, 50);
+		$descripcion = $this->db->escape($descripcion);
+		$descripcion = str_replace("%", "\%", $descripcion);
+		$descripcion = str_replace("_", "\_", $descripcion);
+
+		
+		if(!ctype_digit($precio)){
+			$error = 'El precio debe ser un numero.';
+			return $error;
+		}
 
 		
 
