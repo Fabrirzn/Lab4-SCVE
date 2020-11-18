@@ -43,4 +43,9 @@ class Productos extends Model{
 		return $this->db->fetchAll();
 	}
 
+	public function getConFiltro($filtro){
+		$this->db->query("SELECT * FROM productos where nombre LIKE '%$filtro%'");
+		return $this->db->fetchAll();
+	}
+
 }

@@ -17,9 +17,16 @@ require '../views/Home.php';
 		$v = new Home();
 	}
 
-
 $p = new Productos();
-$todos = $p->getTodos();
+if(isset($_GET['filtro']) && $_GET['filtro'] != '')
+{
+	$filtro = $_GET['filtro'];
+	$todos = $p->getConFiltro($filtro);
+}
+else {
+	$todos = $p->getTodos();
+}
+
 
 $v = new Home();
 $v->productos = $todos;

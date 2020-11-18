@@ -8,29 +8,24 @@
 <body>
 		<header>
 			<nav class="navbar navbar-light bg-light">
-				<a class="navbar-brand" href="#">
-				 
+				<a class="navbar-brand" href="home.php">				 
 				  SCVE
 				</a>
-				<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" 
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
-					Hola <?= $_SESSION['usuario'] ?>
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownBoton">
-					<a href="PantallaVentas" class="dropdown-item">Vender</a>
-					<a href="#" class="dropdown-item">Mis Compras</a>
-					<a href="#" class="dropdown-item">Mis Ventas</a>
-					<a href="#" class="dropdown-item">Mi Pefil</a>
-					<div class="dropdown-divider"></div>
-					<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
+				<div class="dropdown dropleft">
+					<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Hola <?= $_SESSION['usuario'] ?>
+					</button>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
+						<a href="#" class="dropdown-item">Mis Compras</a>
+						<a href="#" class="dropdown-item">Mis Ventas</a>
+						<a href="#" class="dropdown-item">Mi Pefil</a>
+						<div class="dropdown-divider"></div>
+						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
+					</div>
 				</div>		
 			  </nav>						
 		</header>
-		
-		<div id="buscador">
-			<input type="text" class="form-control" id="" placeholder="Busque Algo">
-
-		</div>
 		
 		<div class="container-fluid" align="center" >
 
@@ -47,21 +42,13 @@
 
 				<input type="submit" value="Vender" class="boton">
 
-
-
 			</form>
-
-
-
 
 		</div>
 
-
-		
-
 		<footer class="page-footer font-small blue fixed-bottom">
   			<div class="footer-copyright text-center m-3">© 2020 Copyright:
-    			<a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+				<b> Julian Orrillo - Rozenmuter Fabricio</b>
   			</div>
 		</footer>
 </body>

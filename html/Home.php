@@ -9,47 +9,47 @@
 <body>
 		<header>
 			<nav class="navbar navbar-light bg-light">
-				<a class="navbar-brand" href="#">
-				  
+				<a class="navbar-brand" href="home.php">			  
 				  SCVE
 				</a>
-				<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" 
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
-					Hola <?= $_SESSION['usuario'] ?>
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownBoton">
-					<a href="PantallaVentas" class="dropdown-item">Vender</a>
-					<a href="#" class="dropdown-item">Mis Compras</a>
-					<a href="#" class="dropdown-item">Mis Ventas</a>
-					<a href="#" class="dropdown-item">Mi Pefil</a>
-					<div class="dropdown-divider"></div>
-					<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
-				</div>		
+				<div class="dropdown dropleft">
+					<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Hola <?= $_SESSION['usuario'] ?>
+					</button>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
+						<a href="#" class="dropdown-item">Mis Compras</a>
+						<a href="#" class="dropdown-item">Mis Ventas</a>
+						<a href="#" class="dropdown-item">Mi Pefil</a>
+						<div class="dropdown-divider"></div>
+						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
+					</div>
+				</div>	
 			  </nav>						
 		</header>
 		
-		<div id="buscador">
-			<input type="text" class="form-control" id="" placeholder="Busque Algo">
-		</div>
+		<form action="home.php" method="GET" class="d-flex justify-content-center align-items-center form form-inline mb-5 p-2">
+			<input type="text" class="form-control w-25" name="filtro" placeholder="Ingrese la descripcion del Artículo a buscar">
+			<button class="btn btn-info ml-3" id="btnBuscador">Buscar</button>
+			<button class="btn btn-warning ml-3" id="btnRestablecer">Restablecer Filtro</button>
+		</form>
 		
 		<div class="row">
-				<div class="col-sm-12 col-md-12 col-lg-3 text-center">
-					<div class="img-fluid">
 						<?php foreach($this->productos as $p) { ?>
+							<div class="col-sm-12 col-md-12 col-lg-4 text-center p-3">
 						<img width="100" class="Img-thumbnail" src="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>">
 						<p><?= $p['nombre'] ?></p>
 						<p>$ <?= $p['precio'] ?></p>
-						<button class="btn btn-success">COMPRAR</button><br/>
-					</div>
+						<button class="btn btn-success">COMPRAR</button>
 				</div>
 				<?php } ?>
 				</div>
-			</div>
+		</div>
 
 
 		<footer class="page-footer font-small blue fixed-bottom">
   			<div class="footer-copyright text-center m-3">© 2020 Copyright:
-    			<a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+				<b> Julian Orrillo - Rozenmuter Fabricio</b>
   			</div>
 		</footer>
 </body>

@@ -74,7 +74,7 @@ class Usuarios extends Model{
 		}	
 	}
 
-	public function IniciarSesion ($usuario, $contr){
+	public function IniciarSesion ($usuario, $password){
 
 		session_start();
 		
