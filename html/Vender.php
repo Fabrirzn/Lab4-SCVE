@@ -18,7 +18,7 @@
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
 						<a href="#" class="dropdown-item">Mis Compras</a>
-						<a href="#" class="dropdown-item">Mis Ventas</a>
+						<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
 						<a href="#" class="dropdown-item">Mi Pefil</a>
 						<div class="dropdown-divider"></div>
 						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>

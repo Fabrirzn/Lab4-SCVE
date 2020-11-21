@@ -12,6 +12,13 @@
 				<a class="navbar-brand" href="home.php">			  
 				  SCVE
 				</a>
+				<ul class "navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="MiCarrito.php">Carrito(<?php 
+							echo (empty($_SESSION['carrito']))?0:count($_SESSION['carrito']);
+							?>)</a>
+					</li>
+				</ul>
 				<div class="dropdown dropleft">
 					<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Hola <?= $_SESSION['usuario'] ?>
@@ -19,7 +26,7 @@
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
 						<a href="#" class="dropdown-item">Mis Compras</a>
-						<a href="#" class="dropdown-item">Mis Ventas</a>
+						<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
 						<a href="#" class="dropdown-item">Mi Pefil</a>
 						<div class="dropdown-divider"></div>
 						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
@@ -40,7 +47,14 @@
 						<img width="100" class="Img-thumbnail" src="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>">
 						<p><?= $p['nombre'] ?></p>
 						<p>$ <?= $p['precio'] ?></p>
-						<button class="btn btn-success">COMPRAR</button>
+						
+						 <form action="MiCarrito.php" method="post">
+                                <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($p['id_productos'], COD, KEY); ?>">
+                                <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($p['nombre'], COD, KEY); ?>">
+                                <input type="hidden" name="precio" id="precio" value="<?php echo openssl_encrypt($p['precio'], COD, KEY); ?>">
+                                <input type="hidden" name="cantidad" id="cantidad" value="<?php echo openssl_encrypt(1, COD, KEY); ?>">
+                                <button class="btn btn-primary" name="btnAccion" value="Agregar" type="submit">Agregar el carrito</button>
+                            </form>
 				</div>
 				<?php } ?>
 				</div>
