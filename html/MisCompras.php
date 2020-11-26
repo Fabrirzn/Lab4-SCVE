@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Vender</title>
+	<title>MisCompras</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 
 </head>
@@ -25,37 +25,32 @@
 						<div class="dropdown-divider"></div>
 						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
 					</div>
-				</div>		
+				</div>			
 			  </nav>						
 		</header>
-		
-		<div class="container text-center">
-			<form action="" method="post" enctype="multipart/form-data" target="_blank">
-									
-									<?php foreach($this->productos as $p) { ?>
-					<input type="radio" name="id" value=" <?= $p['id_productos'] ?>" > <p> <?= $p['id_productos'] ?></p>
-					<br /> <br />
-					<label>Nombre</label>
-					<input type="text" name="nombre-producto" value="<?= $p['nombre'] ?>">	<br /> <br />
-					<label>Descripcion</label>
-					<input type="text" name="descripcion" value="<?= $p['descripcion'] ?>"> <br /> <br />
-					<label>Precio</label>
-					<input type="text" name="precio" value="<?= $p['precio'] ?>"> <br /> <br />
-					<label>Foto</label>
-					<input type="file"  id="prd_foto1" name="prd_foto1" value="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>"><br /> <br />
+					
+        <div class="container text-center mt-3">
+        <h1>Mis Compras</h1>
+        <?php foreach($this->productos as $p) { ?>
+				<div class="col-sm-12 col-md-12 col-lg-12 text-center p-5">
 
-					<input type="submit" value="Editar" class="boton"><br /> <br />
+						<img width="100" class="Img-thumbnail" src="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>">
+						<p><?= $p['nombre'] ?></p>
+						<p>$ <?= $p['precio'] ?></p>
+						
+                                <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($p['id_productos'], COD, KEY); ?>">
+                                <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($p['nombre'], COD, KEY); ?>">
+                                <input type="hidden" name="precio" id="precio" value="<?php echo openssl_encrypt($p['precio'], COD, KEY); ?>">
+                                <input type="hidden" name="cantidad" id="cantidad" value="<?php echo openssl_encrypt(1, COD, KEY); ?>">
 
-					<?php } ?>
-
-				</form>
-		</div>
-
-		<footer class="page-footer font-small blue fixed-bottom">
-					<div class="footer-copyright text-center m-3">© 2020 Copyright:
-					<b> Julian Orrillo - Rozenmuter Fabricio</b>
-  					</div>
-		</footer>
+				<?php } ?>
+        </div>
+					
+        <footer class="page-footer font-small blue fixed-bottom">
+        <div class="footer-copyright text-center m-3">© 2020 Copyright:
+				<b> Julian Orrillo - Rozenmuter Fabricio</b>
+  			</div>
+        </footer>
 </body>
 
 

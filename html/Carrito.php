@@ -76,11 +76,15 @@
 					        </tr>
 					        <tr>
 					            <td colspan="5">
-					                <form action="pagar.php" method="post">
+					                <form action="Pagar.php" method="post">
 					                    <div class="alert alert-success" role="alert">
 					                        <div class="form-group">
 					                            <label for="email">Correo de contacto:</label>
-					                            <input class="form-control" type="email" name="email" id="email" placeholder="Por favor escribe tu correo." required>
+												<input class="form-control" type="email" name="email" id="email" placeholder="Por favor escribe tu correo." required>
+												<input type="hidden" name="id" id="id" value="<?= $producto['id']?>">
+												<input type="hidden" name="precio" id="precio" value="$<?= $producto['precio'] ?>">
+												<input type="hidden" name="nombre" id="nombre" value="$<?= $producto['nombre'] ?>">
+												<input type="hidden" name="cant" id="cant" value="$<?= $producto['cantidad'] ?>">
 					                        </div>
 					                        <small id="emailHelp" class="form-text text-muted">Los productos se enviaran a este correo.</small>
 					                    </div>

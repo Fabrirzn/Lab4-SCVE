@@ -111,4 +111,10 @@ class Usuarios extends Model{
 
 		return true;
 	}
+
+	public function getIdUsuario($nombreUsuario){
+		$this->db->query("SELECT id_usuario FROM usuario WHERE  usuario = '$nombreUsuario'");
+		$aux = $this->db->fetch();
+		return $aux['id_usuario'];
+	}
 }

@@ -21,10 +21,10 @@ $p = new Productos();
 if(isset($_GET['filtro']) && $_GET['filtro'] != '')
 {
 	$filtro = $_GET['filtro'];
-	$todos = $p->getConFiltro($filtro);
+	$todos = $p->getConFiltro($filtro,$_SESSION['usuario']);
 }
 else {
-	$todos = $p->getTodos();
+	$todos = $p->getTodos($_SESSION['usuario']);
 }
 
 

@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Vender</title>
+	<title>Pagar</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
-
 </head>
 
 <body>
 		<header>
 			<nav class="navbar navbar-light bg-light">
-				<a class="navbar-brand" href="Home.php">
-				 
+				<a class="navbar-brand" href="home.php">				 
 				  SCVE
 				</a>
 				<div class="dropdown dropleft">
@@ -19,7 +17,7 @@
 					</button>
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
-						<a href="PantallaMisCompras.php" class="dropdown-item">Mis Compras</a>
+						<a href="#" class="dropdown-item">Mis Compras</a>
 						<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
 						<a href="#" class="dropdown-item">Mi Pefil</a>
 						<div class="dropdown-divider"></div>
@@ -29,32 +27,33 @@
 			  </nav>						
 		</header>
 		
-		<div class="container text-center">
-			<form action="" method="post" enctype="multipart/form-data" target="_blank">
-									
-									<?php foreach($this->productos as $p) { ?>
-					<input type="radio" name="id" value=" <?= $p['id_productos'] ?>" > <p> <?= $p['id_productos'] ?></p>
-					<br /> <br />
-					<label>Nombre</label>
-					<input type="text" name="nombre-producto" value="<?= $p['nombre'] ?>">	<br /> <br />
-					<label>Descripcion</label>
-					<input type="text" name="descripcion" value="<?= $p['descripcion'] ?>"> <br /> <br />
-					<label>Precio</label>
-					<input type="text" name="precio" value="<?= $p['precio'] ?>"> <br /> <br />
-					<label>Foto</label>
-					<input type="file"  id="prd_foto1" name="prd_foto1" value="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>"><br /> <br />
+		<div class="container-fluid" align="center" >
 
-					<input type="submit" value="Editar" class="boton"><br /> <br />
+            <form action="Pagar.php" method="post">
+                    <?php foreach($this->producto as $p) { ?>
+							<div class="col-sm-12 col-md-12 col-lg-4 text-center p-3">
+                            <label><b>Nombre del Articulo</b></label>
+                                <p><?= $p['nombre'] ?></p>
 
-					<?php } ?>
-
-				</form>
+                                <label><b>Precio</b></label>
+                                <p>$ <?= $p['precio'] ?></p>                                                                      
+							</div>
+				    <?php } ?>            
+                <label>Metodo de Pago</label>
+                <select type="text" name="metodoDePago">
+                    <option>PayPal</option>
+                    <option>MercadoPago</option>
+                </select>
+				<input type="hidden" name="pagoOk" id="pagoOk" value="1">
+				<input type="hidden" name="limpio" id="limpio" value="1">
+                <input type="submit" value="pagar" class="btn btn-success">
+             </form>
 		</div>
 
 		<footer class="page-footer font-small blue fixed-bottom">
-					<div class="footer-copyright text-center m-3">© 2020 Copyright:
-					<b> Julian Orrillo - Rozenmuter Fabricio</b>
-  					</div>
+  			<div class="footer-copyright text-center m-3">© 2020 Copyright:
+				<b> Julian Orrillo - Rozenmuter Fabricio</b>
+  			</div>
 		</footer>
 </body>
 

@@ -4,6 +4,11 @@
 
 class Productos extends Model{
 
+	public $nombre;
+	public $id;
+	public $precio;
+	public $cantidad;
+
 	public function crearVenta($usuarioid, $nombre, $descripcion, $precio, $foto){
 
 		$usuarioaux = new Usuarios();
@@ -35,18 +40,50 @@ class Productos extends Model{
 			$imgContenido = addslashes(file_get_contents($imagen));
 
 		$this->db->query("INSERT INTO productos (nombre, descripcion, precio, fotos, fecha, usuario) VALUES ('$nombre', '$descripcion', '$precio', '$imgContenido', NOW(), '$usuarioid' )  ");
+	    $this->insertarRegistroVentas($usuarioid, $precio);
 		}
 	}
 
-	public function getTodos(){
-		$this->db->query("SELECT * FROM productos");
+	public function insertarRegistroVentas($usuarioid, $precio)
+	{
+		$u = new Usuarios();
+		$idUsr = $u->getIdUsuario($usuarioid);
+		$this->db->query("SELECT MAX(id_productos) FROM productos");
+		$idprod = $this->db->fetch();
+		$aux = implode($idprod);	
+		$this->db->query("INSERT INTO movimentos (cantidad, fecha, id_producto, id_usuario, precio, tipo_mov) VALUES ('1', NOW(), '$aux', '$idUsr', '$precio', 'VENTA') ");
+	}
+
+	public function comprar($usuarioid, $precio, $idProd, $cantidad){
+
+		$this->db->query("INSERT INTO movimentos (cantidad, fecha, id_producto, id_usuario, precio, tipo_mov) VALUES ('$cantidad', NOW(), '$idProd', '$usuarioid', '$precio', 'COMPRA')  ");
+		
+	}
+
+	public function getTodos($usr){
+		$this->db->query("SELECT * FROM productos where usuario != '$usr'");
 		return $this->db->fetchAll();
 	}
 
-	public function getConFiltro($filtro){
-		$this->db->query("SELECT * FROM productos where nombre LIKE '%$filtro%'");
+	public function getConFiltro($filtro,$usr){
+		$this->db->query("SELECT * FROM productos where nombre LIKE '%$filtro%' and usuario <> '$usr'");
 		return $this->db->fetchAll();
 	}
+
+	//consulta para mis compras 
+	//SELECT * FROM `productos` p INNER JOIN movimentos m on p.id_productos = m.id_producto WHERE p.usuario = 'julianorrillo' and m.tipo_mov = 'COMPRA'
+	public function MisCompras($usuario){
+
+		$usuarioaux = new Usuarios();
+		$id = $usuarioaux->getIdUsuario($usuario);
+		if(!$usuarioaux->existeUsuario($usuario)) throw("error Productos 1"); 
+
+		$this->db->query("SELECT * FROM productos p INNER JOIN movimentos m on p.id_productos = m.id_producto WHERE m.id_usuario = '$id' and m.tipo_mov = 'COMPRA'");
+
+		return $this->db->fetchAll();
+
+	}
+
 
 	/* Muestra todos los productos del usuario */
 	public function MiosTodos($usuario){
