@@ -17,7 +17,7 @@
 					</button>
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
-						<a href="#" class="dropdown-item">Mis Compras</a>
+						<a href="PantallaMisCompras.php" class="dropdown-item">Mis Compras</a>
 						<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
 						<a href="#" class="dropdown-item">Mi Pefil</a>
 						<div class="dropdown-divider"></div>
@@ -39,14 +39,14 @@
                                 <p>$ <?= $p['precio'] ?></p>                                                                      
 							</div>
 				    <?php } ?>            
-                <label>Metodo de Pago</label>
-                <select type="text" name="metodoDePago">
+                <label for="metodo"><b>Metodo de Pago</b></label>
+                <select class="custom-select w-25" type="text" name="metodoDePago" id="metodo">
                     <option>PayPal</option>
                     <option>MercadoPago</option>
                 </select>
 				<input type="hidden" name="pagoOk" id="pagoOk" value="1">
 				<input type="hidden" name="limpio" id="limpio" value="1">
-                <input type="submit" value="pagar" class="btn btn-success">
+                <input type="submit" value="Pagar" class="btn btn-success">
              </form>
 		</div>
 
