@@ -5,6 +5,7 @@
 class Productos extends Model{
 
 	public $nombre;
+	public $descripcion;
 	public $id;
 	public $precio;
 	public $cantidad;
@@ -104,7 +105,7 @@ class Productos extends Model{
 		if($uid < 1) return false;*/
 
 		$this->db->query("SELECT * FROM productos WHERE id_productos = '$pid'");
-
+		$aux = $this->db->fetch();
 		if($this->db->numRows() != 1) return false;
 
 		return true;
@@ -138,10 +139,8 @@ class Productos extends Model{
 			$imagen = $foto["tmp_name"];
 			$imgContenido = addslashes(file_get_contents($imagen));
 
-			$this->db->query("UPDATE productos set nombre = $nombre WHERE id_productos = $productosid ");
-			$this->db->query("UPDATE productos set descripcion = $descripcion WHERE id_productos = $productosid ");
-			$this->db->query("UPDATE productos set precio = $precio WHERE id_productos = $productosid ");
-			$this->db->query("UPDATE productos set foto = $foto WHERE id_productos = $productosid ");
+			$this->db->query("UPDATE productos set nombre = '$nombre', descripcion = '$descripcion', precio = '$precio', fotos = '$imgContenido' WHERE id_productos = '$productosid' ");
+
 		}
 	}
 

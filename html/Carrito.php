@@ -8,30 +8,30 @@
 
 <body>
 		<header>
-			<nav class="navbar navbar-light bg-light">
-				<a class="navbar-brand" href="Home.php">
-				  
+		<nav class="navbar navbar-light bg-dark">
+				<a class="navbar-brand text-white" href="home.php">			  
 				  SCVE
 				</a>
 				<ul class "navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Carrito(<?php 
+						<a class="nav-link" href="MiCarrito.php">Carrito(<?php 
 							echo (empty($_SESSION['carrito']))?0:count($_SESSION['carrito']);
 							?>)</a>
 					</li>
 				</ul>
-				<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" 
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
-					Hola <?= $_SESSION['usuario'] ?>
-				</button>
-				<div class="dropdown-menu" aria-labelledby="dropdownBoton">
-					<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
-					<a href="#" class="dropdown-item">Mis Compras</a>
-					<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
-					<a href="#" class="dropdown-item">Mi Pefil</a>
-					<div class="dropdown-divider"></div>
-					<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
-				</div>		
+				<div class="dropdown dropleft">
+					<button class="btn btn-info dropdown-toggle" type="botton" id="dropdownBoton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Hola <?= $_SESSION['usuario'] ?>
+					</button>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
+						<a href="PantallaMisCompras.php" class="dropdown-item">Mis Compras</a>
+						<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
+						<a href="#" class="dropdown-item">Mi Pefil</a>
+						<div class="dropdown-divider"></div>
+						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
+					</div>
+				</div>	
 			  </nav>						
 		</header>
 
@@ -107,7 +107,7 @@
 		<script src="js/jquery.min.js"></script>
 		<footer class="page-footer font-small blue fixed-bottom">
   			<div class="footer-copyright text-center m-3">© 2020 Copyright:
-    			<a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+				<b> Julian Orrillo - Rozenmuter Fabricio</b>
   			</div>
 		</footer>
 </body>

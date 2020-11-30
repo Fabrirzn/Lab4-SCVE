@@ -8,8 +8,8 @@
 
 <body>
 		<header>
-			<nav class="navbar navbar-light bg-light">
-				<a class="navbar-brand" href="home.php">			  
+		<nav class="navbar navbar-light bg-dark">
+				<a class="navbar-brand text-white" href="home.php">				  
 				  SCVE
 				</a>
 				<ul class "navbar-nav mr-auto">

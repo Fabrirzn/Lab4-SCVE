@@ -3,7 +3,57 @@
 <head>
 	<title>Inicio Sesion </title>
 	<link rel="stylesheet" href="../css/estilo.css">
-		<script type="text/javascript">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<body>
+
+	<h1>Registrarse  </h1>
+
+	<div id="error"></div>
+
+	<div id="form">
+		<form action="" method="post">
+			<div class="form-group">
+				<label for="Nom">Nombre</label>
+				<input type="text" class="form-control" name="Nombre" id="Nom">
+			</div>
+			<div class="form-group">
+				<label for="Ape">Apellido</label>
+				<input type="text" name="Apellido" class="form-control" id="Ape">	
+			</div>
+			<div class="form-group">
+				<label for="Usu">Usuario</label>
+				<input type="text" name="Usuario" class="form-control" id="Usu">	
+			</div>
+			<div class="form-group">
+				<label for="dni">DNI</label>
+				<input type="text" name="DNI" class="form-control" id="dni">	
+			</div>
+			<div class="form-group">
+				<label for="Tel">Telefono</label>
+				<input type="text" name="Telefono" class="form-control" id="Tel">	
+			</div>
+			<div class="form-group">
+				<label for="Dir">Dirección</label>
+				<input type="text" name="Direccion" class="form-control" id="Dir">	
+			</div>
+			<div class="form-group">
+				<label for="con1">Contraseña</label>
+				<input type="password" name="Contrasenia" class="form-control" id="con1">
+			</div>
+			<div class="form-group">
+				<label for="con2">Repetir Contraseña</label>
+				<input type="password" name="Contrasenia2" class="form-control" id="con2">
+			</div>
+			<input type="submit" value="Registrarse" class="btn btn-success">
+		</form>
+	</div>
+
+
+
+</body>
+
+<script type="text/javascript">
 		document.getElementById("formu").onsubmit = function () {
 			var cont = document.getElementById("con1").value;
 			var cont2 = document.getElementById("con2").value;
@@ -43,36 +93,8 @@
 			};
 		};
 	</script>
-</head>
-<body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-	<h1>Registrarse  </h1>
-
-	<div id="error"></div>
-
-	<div id="form">
-		<form action="" method="post">
-			<label>Nombre</label>
-			<input type="text" name="Nombre" class="texto" id="Nom"> <br /> <br />
-			<label>Apellido</label>
-			<input type="text" name="Apellido" class="texto" id="Ape">	<br /> <br />
-			<label>Usuario</label>
-			<input type="text" name="Usuario" class="texto" id="Usu">	<br /> <br />
-			<label>DNI</label>
-			<input type="text" name="DNI" class="texto" id="dni">	<br /> <br />
-			<label>Telefono</label>
-			<input type="text" name="Telefono" class="texto" id="Tel">	<br /> <br />
-			<label>Dirección</label>
-			<input type="text" name="Direccion" class="texto" id="Dir">	<br /> <br />
-			<label>Contraseña</label>
-			<input type="password" name="Contrasenia" class="texto" id="con1">	<br /> <br /> 
-			<label>Repetir Contraseña</label>
-			<input type="password" name="Contrasenia2" class="texto" id="con2">	<br /> <br />
-			<input type="submit" value="Registrarse" class="boton">
-		</form>
-	</div>
-
-
-
-</body>
 </html>

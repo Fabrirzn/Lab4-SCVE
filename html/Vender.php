@@ -7,8 +7,8 @@
 
 <body>
 		<header>
-			<nav class="navbar navbar-light bg-light">
-				<a class="navbar-brand" href="home.php">				 
+		<nav class="navbar navbar-light bg-dark">
+				<a class="navbar-brand text-white" href="home.php">					 
 				  SCVE
 				</a>
 				<div class="dropdown dropleft">
@@ -29,7 +29,7 @@
 		
 		<div class="container-fluid" align="center" >
 
-
+		<h1>Vender</h1>
 			<form action="" method="post" enctype="multipart/form-data">
 				<label>Nombre</label>
 				<input type="text" name="nombre-producto">	<br /> <br />

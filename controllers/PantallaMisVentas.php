@@ -25,22 +25,22 @@ require '../views/MisVentas.php';
 
 
 
-	if(isset($_POST['id'])){
-		$auxp = new Productos();
+	if(isset($_POST['idProd'])){
+		if(($_POST['actualiza'] != 0))
+		{
+			$auxp = new Productos();
 
-		if($auxp-> existeProducto($_POST['id'])){
-			if(!isset($_POST['nombre-producto'])) throw("error Pantalla Producto 1");
-			if(!isset($_POST['descripcion'])) throw("error Pantalla Producto 2");
-			if(!isset($_POST['precio'])) throw("error Pantalla Producto 3");
-			$foto =  $_FILES['prd_foto1'];
-			if(!isset($foto)) throw("error 4");
-
-			$result = $auxp->ActualizacionProducto($_POST['id'], $_POST['nombre-producto'], $_POST['descripcion'], $_POST['precio'], $foto );
+			if($auxp-> existeProducto($_POST['idProd'])){
+				$p->id = $_POST['idProd'];
+				$p->nombre = $_POST['nombre-producto'];
+				$p->descripcion = $_POST['descripcion'];
+				$p->precio = $_POST['precio'];
+				$foto =  $_FILES['prd_foto1'];	
+				$result = $auxp->ActualizacionProducto($p->id, $p->nombre, $p->descripcion , $p->precio, $foto );
+			}
 		}
+		
 	}
-
-
-
 
 
 	$v = new MisVentas();

@@ -22,8 +22,9 @@ require '../views/AltaProductoOk.php';
 	$e = new Usuarios();
 
 	if(count($_POST) > 0){
-
-		$p = new Productos();
+		if($_POST['nombre-producto'] != '')
+		{
+			$p = new Productos();
 		
  		$usuario = $_SESSION['usuario'];
 
@@ -37,6 +38,7 @@ require '../views/AltaProductoOk.php';
 		$p->crearVenta($usuario, $_POST['nombre-producto'], $_POST['descripcion'], $_POST['precio'], $foto );
 
 		$v = new AltaProductoOk();
+		}
 	}
 $v->render();
 
