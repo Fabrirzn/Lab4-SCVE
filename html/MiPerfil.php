@@ -21,7 +21,7 @@
 						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
 						<a href="PantallaMisCompras.php" class="dropdown-item">Mis Compras</a>
 						<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
-						<a href="#" class="dropdown-item">Mi Pefil</a>
+						<a href="PantallaMiPerfil.php" class="dropdown-item">Mi Pefil</a>
 						<div class="dropdown-divider"></div>
 						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
 					</div>
@@ -30,51 +30,42 @@
 		</header>
 		
 		<div class="container text-center">
-		<h1>Mi Perfil</h1>
+			<h1>Mi Perfil</h1>
 				<div class="row d-flex justify-content-center align-items-center">
-				<?php foreach($this->usuarios as $u) { ?>
-				<form action="PantallaMisVentas.php" class="formEditar" method="post" enctype="multipart/form-data">
-
-						
-							<label for="idUsu">EDITAR</label>
-							<input type="checkbox" name="idUsu" id="idUsu" value="<?= $u['id_usuario'] ?>">
-
-							<div class="form-group form-inline p-1">
-								<label for="idnom">Nombre</label>
-								<input type="text" class="form-control w-100" name="nombre-usuario" id="idnom" value="<?= $u['nombre'] ?>">		
-							</div>
-							<div class="form-group form-inline p-1">
-								<label for="desc">Apellido</label>
-								<input type="text" class="form-control w-100" name="apellido" id="desc" value="<?= $u['apellido'] ?>">
-							</div>
-							<div class="form-group form-inline p-1">
-								<label for="dni">dni</label>
-								<input type="text" class="form-control w-25" name="dni" id="dni" value="<?= $u['dni'] ?>"> 
-							</div>
-									<div class="form-group form-inline p-1">
-								<label for="telefono">telefono</label>
-								<input type="text" class="form-control w-25" name="telefono" id="telefono" value="<?= $u['telefono'] ?>"> 
-							</div>		
-								<div class="form-group form-inline p-1">
-								<label for="direccion">direccion</label>
-								<input type="text" class="form-control w-25" name="direccion" id="direccion" value="<?= $u['direccion'] ?>"> 
-							</div>					
-								<input type="hidden" name="actualizar" id="actualiza" value="1">
-							<div class>
-							<input type="submit" value="Editar" class="btn btn-primary m-4" >
-							</div>
+					<?php foreach($this->usuarios as $u) { ?>
+						<form action="PantallaMiPerfil.php" class="formEditarPerfil" method="post" enctype="multipart/form-data">
 							
-						</div>
-				</form>
-				<?php } ?>
+									<label for="idUsu">EDITAR</label>
+									<input type="checkbox" name="idUsu" id="idUsu" value="<?= $u['id_usuario'] ?>">
 
+									<div class="form-group form-inline p-1">
+										<label for="idnom">Nombre</label>
+										<input type="text" class="form-control w-100" name="nombre-usuario" id="idnom" value="<?= $u['nombre'] ?>">		
+									</div>
+									<div class="form-group form-inline p-1">
+										<label for="desc">Apellido</label>
+										<input type="text" class="form-control w-100" name="apellido" id="desc" value="<?= $u['apellido'] ?>">
+									</div>
+									<div class="form-group form-inline p-1">
+										<label for="dni">dni</label>
+										<input type="text" class="form-control w-100" name="dni" id="dni" value="<?= $u['dni'] ?>"> 
+									</div>
+										<div class="form-group form-inline p-1">
+										<label for="telefono">telefono</label>
+										<input type="text" class="form-control w-100" name="telefono" id="telefono" value="<?= $u['telefono'] ?>"> 
+									</div>		
+										<div class="form-group form-inline p-1">
+										<label for="direccion">direccion</label>
+										<input type="text" class="form-control w-100" name="direccion" id="direccion" value="<?= $u['direccion'] ?>"> 
+									</div>					
+										<input type="hidden" name="actualizar" id="actualiza" value="0">
+										<input type="submit" value="Editar" class="btn btn-primary m-4" onclick="EditarPerfil()">				
+						</form>
 				</div>
-				<div class="alert alert-danger" id="alertaFoto" style="display:none"role="alert">
-  								Debe seleccionar una foto!!!
-				</div>
-				<div class="alert alert-success" id="Exito" style="display:none"role="alert">
-  								Se ha Actualizado el producto con Éxito!!!
-				</div>
+					<?php } ?>
+					<div class="alert alert-success" id="Exito" style="display:none"role="alert">
+  								Se ha Actualizado el perfil de usuario
+					</div>			
 		</div>
 
 		<footer class="page-footer font-small blue fixed-bottom">

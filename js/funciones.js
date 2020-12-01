@@ -39,5 +39,20 @@ var validoyEnvioEditarMiVenta = () =>{
             }
           }
     }   
-    
+ 
 }
+
+var EditarPerfil = () =>{
+    var frm = document.getElementsByClassName("formEditarPerfil");
+    var i;
+    for (i = 0; i < frm.length; i++) {
+        if(frm[i].idUsu.checked) {
+                document.getElementById('actualiza').value = '1';
+                muestraExito();
+                return true
+        }               
+            else{
+                return false;
+            }
+          }
+    }   

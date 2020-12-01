@@ -21,7 +21,7 @@
 						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
 						<a href="PantallaMisCompras.php" class="dropdown-item">Mis Compras</a>
 						<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
-						<a href="#" class="dropdown-item">Mi Pefil</a>
+						<a href="PantallaMiPerfil.php" class="dropdown-item">Mi Pefil</a>
 						<div class="dropdown-divider"></div>
 						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
 					</div>
@@ -55,12 +55,12 @@
 								<label>Foto</label>
 								<input type="file"  id="prd_foto1" name="prd_foto1" value="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>">							
 								<input type="hidden" name="actualiza" id="actualiza" value="0">
-								<input type="hidden" name="Elimina" id="Elimina" value="1"
-							<div class>
-							<input type="submit" value="Editar" class="btn btn-primary m-4" onclick="return validoyEnvioEditarMiVenta()">
-							<input type="submit" value="Eliminar" name="Eliminar"class="btn btn-primary m-4" >
+								<input type="hidden" name="Elimina" id="Elimina" value="1">
+							 
+							<div class="form-group form-inline p-1">
+								<input type="submit" value="Editar" class="btn btn-primary m-4" onclick="return validoyEnvioEditarMiVenta()">
+								<input type="submit" value="Eliminar" name="Eliminar"class="btn btn-primary m-4" >
 							</div>
-							
 						</div>
 				</form>
 				<?php } ?>

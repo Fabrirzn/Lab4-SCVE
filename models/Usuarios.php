@@ -4,6 +4,13 @@
 
 class Usuarios extends Model{
 
+	public $id;
+	public $nombre;
+	public $apellido;
+	public $dni;
+	public $telefono;
+	public $direccion;
+
 	public function crearUsuario ($nombre, $apellido, $usuario, $dni, $telefono, $direccion, $contrasenia, $Contrasenia2){
 
 		$nombre = substr($nombre, 0, 50);
@@ -141,16 +148,10 @@ class Usuarios extends Model{
 		$nombre = $this->db->escape($nombre);
 		$nombre = str_replace("%", "\%", $nombre);
 		$nombre = str_replace("_", "\_", $nombre);
-		echo $nombre;
 		$apellido = substr($apellido, 0, 50);
 		$apellido = $this->db->escape($apellido);
 		$apellido = str_replace("%", "\%", $apellido);
 		$apellido = str_replace("_", "\_", $apellido);
-
-		$usuario = substr($usuario, 0, 50);
-		$usuario = $this->db->escape($usuario);
-		$usuario = str_replace("%", "\%", $usuario);
-		$usuario = str_replace("_", "\_", $usuario);
 
 		if(!ctype_digit($dni)){
 			$error = 'El DNI debe ser un numero.';
