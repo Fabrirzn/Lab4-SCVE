@@ -12,8 +12,7 @@ class Productos extends Model{
 
 	public function crearVenta($usuarioid, $nombre, $descripcion, $precio, $foto){
 
-		$usuarioaux = new Usuarios();
-		echo $usuarioid;
+		$usuarioaux = new Usuarios();		
 		if(!$usuarioaux->existeUsuario($usuarioid)) die("error Productos 1"); 
 
 		$nombre = substr($nombre, 0, 50);
@@ -48,11 +47,11 @@ class Productos extends Model{
 	public function insertarRegistroVentas($usuarioid, $precio)
 	{
 		$u = new Usuarios();
-		$idUsr = $u->getIdUsuario($usuarioid);
+		//$idUsr = $u->getIdUsuario($usuarioid);
 		$this->db->query("SELECT MAX(id_productos) FROM productos");
 		$idprod = $this->db->fetch();
 		$aux = implode($idprod);	
-		$this->db->query("INSERT INTO movimentos (cantidad, fecha, id_producto, id_usuario, precio, tipo_mov) VALUES ('1', NOW(), '$aux', '$idUsr', '$precio', 'VENTA') ");
+		$this->db->query("INSERT INTO movimentos (cantidad, fecha, id_producto, id_usuario, precio, tipo_mov) VALUES ('1', NOW(), '$aux', '$usuarioid', '$precio', 'VENTA') ");
 	}
 
 	public function comprar($usuarioid, $precio, $idProd, $cantidad){
@@ -62,12 +61,12 @@ class Productos extends Model{
 	}
 
 	public function getTodos($usr){
-		$this->db->query("SELECT * FROM productos where usuario != '$usr'");
+		$this->db->query("SELECT * FROM productos WHERE usuario != '$usr'");
 		return $this->db->fetchAll();
 	}
 
 	public function getConFiltro($filtro,$usr){
-		$this->db->query("SELECT * FROM productos where nombre LIKE '%$filtro%' and usuario <> '$usr'");
+		$this->db->query("SELECT * FROM productos p INNER JOIN movimentos m on p.id_productos = m.id_producto WHERE m.id_usuario <> '$usr' AND p.nombre LIKE '%$filtro%'");
 		return $this->db->fetchAll();
 	}
 
@@ -76,10 +75,10 @@ class Productos extends Model{
 	public function MisCompras($usuario){
 
 		$usuarioaux = new Usuarios();
-		$id = $usuarioaux->getIdUsuario($usuario);
+		//$id = $usuarioaux->getIdUsuario($usuario);
 		if(!$usuarioaux->existeUsuario($usuario)) throw("error Productos 1"); 
 
-		$this->db->query("SELECT * FROM productos p INNER JOIN movimentos m on p.id_productos = m.id_producto WHERE m.id_usuario = '$id' and m.tipo_mov = 'COMPRA'");
+		$this->db->query("SELECT * FROM productos p INNER JOIN movimentos m on p.id_productos = m.id_producto WHERE m.id_usuario = '$usuario' and m.tipo_mov = 'COMPRA'");
 
 		return $this->db->fetchAll();
 
@@ -93,7 +92,7 @@ class Productos extends Model{
 
 		if(!$usuarioaux->existeUsuario($usuario)) throw("error Productos 1"); 
 
-		$this->db->query("SELECT * FROM productos WHERE usuario = '$usuario'");
+		$this->db->query("SELECT * FROM productos p INNER JOIN movimentos m on p.id_productos = m.id_producto WHERE m.id_usuario = '$usuario' and m.tipo_mov = 'VENTA'");
 
 		return $this->db->fetchAll();
 

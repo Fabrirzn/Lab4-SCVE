@@ -22,7 +22,8 @@ require '../views/PagoOk.php';
 if(isset($_POST['pagoOk'])){
     $p = new Productos();
     $u = new usuarios();
-    $idusr = $u->getIdUsuario($_SESSION['usuario']);
+    //idusr = $u->getIdUsuario($_SESSION['usuario']);
+    $idusr = $_SESSION['usuario'];
     foreach ($_SESSION['carrito'] as $indice => $producto) {
         $p->comprar($idusr,$producto['precio'],$producto['id'],$producto['cantidad']);
     }
