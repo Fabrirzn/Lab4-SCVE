@@ -47,16 +47,17 @@ class Productos extends Model{
 	public function insertarRegistroVentas($usuarioid, $precio)
 	{
 		$u = new Usuarios();
+		$now = date_create()->format('Y-m-d H:i:s');
 		//$idUsr = $u->getIdUsuario($usuarioid);
 		$this->db->query("SELECT MAX(id_productos) FROM productos");
 		$idprod = $this->db->fetch();
 		$aux = implode($idprod);	
-		$this->db->query("INSERT INTO movimentos (cantidad, fecha, id_producto, id_usuario, precio, tipo_mov) VALUES ('1', NOW(), '$aux', '$usuarioid', '$precio', 'VENTA') ");
+		$this->db->query("INSERT INTO movimentos (cantidad, fecha, id_producto, id_usuario, precio, tipo_mov) VALUES ('1', '$now', '$aux', '$usuarioid', '$precio', 'VENTA') ");
 	}
 
 	public function comprar($usuarioid, $precio, $idProd, $cantidad){
-
-		$this->db->query("INSERT INTO movimentos (cantidad, fecha, id_producto, id_usuario, precio, tipo_mov) VALUES ('$cantidad', NOW(), '$idProd', '$usuarioid', '$precio', 'COMPRA')  ");
+		$now = date_create()->format('Y-m-d H:i:s');
+		$this->db->query("INSERT INTO movimentos (cantidad, fecha, id_producto, id_usuario, precio, tipo_mov) VALUES ('$cantidad', '$now', '$idProd', '$usuarioid', '$precio', 'COMPRA')  ");
 		
 	}
 

@@ -29,7 +29,8 @@ var validoyEnvioEditarMiVenta = () =>{
             if(frm[i].prd_foto1.value !== ''){
                 ocutaExito();
                 OcultarErrorCargaFoto();
-                document.getElementById('actualiza').value = '1';
+                frm[i].actualiza.value = 1;
+                //document.getElementById('actualiza').value = '1';
                 muestraExito();
                 return true               
             }
