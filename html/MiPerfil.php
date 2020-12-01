@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Vender</title>
+	<title>Perfil</title>
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 
 </head>
@@ -30,35 +30,38 @@
 		</header>
 		
 		<div class="container text-center">
-		<h1>Mis Ventas</h1>
+		<h1>Mi Perfil</h1>
 				<div class="row d-flex justify-content-center align-items-center">
-				<?php foreach($this->productos as $p) { ?>
+				<?php foreach($this->usuarios as $u) { ?>
 				<form action="PantallaMisVentas.php" class="formEditar" method="post" enctype="multipart/form-data">
 
-						<div class="col-sm-12 col-md-12 col-lg-12">
-							<img width="100" id="fot" class="Img-thumbnail mt-3 mb-5" src="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>">
-							<label for="idProd">EDITAR</label>
-							<input type="checkbox" name="idProd" id="idProd" value="<?= $p['id_productos'] ?>">
+						
+							<label for="idUsu">EDITAR</label>
+							<input type="checkbox" name="idUsu" id="idUsu" value="<?= $u['id_usuario'] ?>">
 
 							<div class="form-group form-inline p-1">
 								<label for="idnom">Nombre</label>
-								<input type="text" class="form-control w-100" name="nombre-producto" id="idnom" value="<?= $p['nombre'] ?>">		
+								<input type="text" class="form-control w-100" name="nombre-usuario" id="idnom" value="<?= $u['nombre'] ?>">		
 							</div>
 							<div class="form-group form-inline p-1">
-								<label for="desc">Descripcion</label>
-								<input type="text" class="form-control w-100" name="descripcion" id="desc" value="<?= $p['descripcion'] ?>">
+								<label for="desc">Apellido</label>
+								<input type="text" class="form-control w-100" name="apellido" id="desc" value="<?= $u['apellido'] ?>">
 							</div>
 							<div class="form-group form-inline p-1">
-								<label for="precio">Precio</label>
-								<input type="text" class="form-control w-25" name="precio" id="precio" value="<?= $p['precio'] ?>"> 
+								<label for="dni">dni</label>
+								<input type="text" class="form-control w-25" name="dni" id="dni" value="<?= $u['dni'] ?>"> 
 							</div>
-								<label>Foto</label>
-								<input type="file"  id="prd_foto1" name="prd_foto1" value="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>">							
-								<input type="hidden" name="actualiza" id="actualiza" value="0">
-								<input type="hidden" name="Elimina" id="Elimina" value="1"
+									<div class="form-group form-inline p-1">
+								<label for="telefono">telefono</label>
+								<input type="text" class="form-control w-25" name="telefono" id="telefono" value="<?= $u['telefono'] ?>"> 
+							</div>		
+								<div class="form-group form-inline p-1">
+								<label for="direccion">direccion</label>
+								<input type="text" class="form-control w-25" name="direccion" id="direccion" value="<?= $u['direccion'] ?>"> 
+							</div>					
+								<input type="hidden" name="actualizar" id="actualiza" value="1">
 							<div class>
-							<input type="submit" value="Editar" class="btn btn-primary m-4" onclick="return validoyEnvioEditarMiVenta()">
-							<input type="submit" value="Eliminar" name="Eliminar"class="btn btn-primary m-4" >
+							<input type="submit" value="Editar" class="btn btn-primary m-4" >
 							</div>
 							
 						</div>

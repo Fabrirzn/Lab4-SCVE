@@ -143,4 +143,12 @@ class Productos extends Model{
 		}
 	}
 
+		public function EliminarProducto($productosid){
+			if(!ctype_digit($productosid)) return false;
+			if($productosid < 0) return false;
+
+			$this->db->query("DELETE FROM productos WHERE id_productos = '$productosid'");
+
+	}
+
 }

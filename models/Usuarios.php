@@ -117,4 +117,72 @@ class Usuarios extends Model{
 		$aux = $this->db->fetch();
 		return $aux['id_usuario'];
 	}
+
+		/* Muestra todos los datos del usuario */
+	public function MisDatos($usuario){
+
+		$usuarioaux = new Usuarios();
+
+		if(!$usuarioaux->existeUsuario($usuario)) throw("error Productos 1"); 
+
+		$this->db->query("SELECT * FROM usuario WHERE usuario = '$usuario'");
+
+		return $this->db->fetchAll();
+
+	}
+
+
+	public function ActualizarPerfil($usuarioid, $nombre, $apellido, $dni, $telefono, $direccion){ 
+
+		if(!ctype_digit($usuarioid)) return false;
+		if($usuarioid < 0) return false;
+
+		$nombre = substr($nombre, 0, 50);
+		$nombre = $this->db->escape($nombre);
+		$nombre = str_replace("%", "\%", $nombre);
+		$nombre = str_replace("_", "\_", $nombre);
+		echo $nombre;
+		$apellido = substr($apellido, 0, 50);
+		$apellido = $this->db->escape($apellido);
+		$apellido = str_replace("%", "\%", $apellido);
+		$apellido = str_replace("_", "\_", $apellido);
+
+		$usuario = substr($usuario, 0, 50);
+		$usuario = $this->db->escape($usuario);
+		$usuario = str_replace("%", "\%", $usuario);
+		$usuario = str_replace("_", "\_", $usuario);
+
+		if(!ctype_digit($dni)){
+			$error = 'El DNI debe ser un numero.';
+			return $error;
+		}
+
+		if(strlen($dni) != 8){
+			$error = 'El DNI debe tener 8 digitos';
+			return $error;
+		}
+
+		if(!ctype_digit($telefono)){
+			$error = 'El telefono debe ser un numero';
+			return $error;
+		}
+
+		if(strlen($telefono) < 7 ){
+			$error = 'El telefono tiene que tener mas de 7 digitos ';
+			return $error;
+		}
+
+		if(strlen($telefono) > 13 ){
+			$error = 'El telefono tiene que tener menos de 13 digitos';
+			return $error;
+		}
+
+		$direccion = substr($direccion, 0, 50);
+		$direccion = $this->db->escape($direccion);
+		$direccion = str_replace("%", "\%", $direccion);
+		$direccion = str_replace("_", "\_", $direccion);
+
+		$this->db->query("UPDATE usuario set nombre = '$nombre', apellido = '$apellido', dni = '$dni', telefono = '$telefono', direccion = 'direccion' WHERE id_usuario = '$usuarioid' ");
+
+	}
 }
