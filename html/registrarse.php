@@ -2,16 +2,16 @@
 <html>
 <head>
 	<title>Inicio Sesion </title>
-	<link rel="stylesheet" href="../css/estilo.css">
+	<!-- <link rel="stylesheet" href="../css/estilo.css"> -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
 
-	<h1>Registrarse  </h1>
+
 
 	<div id="error"></div>
-
-	<div id="formu" class="text-center"> 
+	<h1 class="text-center pb-3">Registrarse </h1>
+	<div id="formu" class="d-flex justify-content-center align-items-center text-center"> 
 		<form action="" method="post">
 			<div class="form-group">
 				<label for="Nom">Nombre</label>
