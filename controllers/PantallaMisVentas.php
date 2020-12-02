@@ -42,6 +42,19 @@ require '../views/MisVentas.php';
 		
 	}
 
+		if(isset($_POST['idProd'])){
+		if(($_POST['Elimina'] != 0))
+		{
+			$auxp = new Productos();
+
+			if($auxp-> existeProducto($_POST['idProd'])){
+				$p->id = $_POST['idProd'];	
+				$result = $auxp->EliminarProducto($p->id);
+			}
+		}
+		
+	}
+
 
 	$v = new MisVentas();
 	$v->productos = $todosmios;
