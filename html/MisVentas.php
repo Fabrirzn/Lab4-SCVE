@@ -55,11 +55,11 @@
 								<label>Foto</label>
 								<input type="file"  id="prd_foto1" name="prd_foto1" value="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>">							
 								<input type="hidden" name="actualiza" id="actualiza" value="0">
-								<input type="hidden" name="Elimina" id="Elimina" value="1">
+								<input type="hidden" name="Elimina" id="Elimina" value="0">
 							 
 							<div class="form-group form-inline p-1">
 								<input type="submit" value="Editar" class="btn btn-primary m-4" onclick="return validoyEnvioEditarMiVenta()">
-								<input type="submit" value="Eliminar" name="Eliminar"class="btn btn-primary m-4" >
+								<input type="submit" value="Borrar" name="Eliminar"class="btn btn-primary m-4" onclick="return EliminarProducto()" >
 							</div>
 						</div>
 				</form>

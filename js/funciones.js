@@ -57,3 +57,17 @@ var EditarPerfil = () =>{
             }
           }
     }   
+
+    var EliminarProducto = () =>{
+        var frm = document.getElementsByClassName("formEditar");
+        var i;
+        for (i = 0; i < frm.length; i++) {
+            if(frm[i].idProd.checked) {
+                    frm[i].Elimina.value = 1;
+                    return true
+            }               
+                else{
+                    return false;
+                }
+              }
+        }   

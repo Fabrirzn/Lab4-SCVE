@@ -11,7 +11,7 @@
 
 	<div id="error"></div>
 
-	<div id="form">
+	<div id="formu" class="dflex justify-content-center align-items-center text-center"> 
 		<form action="" method="post">
 			<div class="form-group">
 				<label for="Nom">Nombre</label>

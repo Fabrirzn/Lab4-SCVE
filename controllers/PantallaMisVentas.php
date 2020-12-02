@@ -28,33 +28,27 @@ require '../views/MisVentas.php';
 	if(isset($_POST['idProd'])){
 		if(($_POST['actualiza'] != 0))
 		{
-			$auxp = new Productos();
 
-			if($auxp-> existeProducto($_POST['idProd'])){
+			if($p-> existeProducto($_POST['idProd'])){
 				$p->id = $_POST['idProd'];
 				$p->nombre = $_POST['nombre-producto'];
 				$p->descripcion = $_POST['descripcion'];
 				$p->precio = $_POST['precio'];
 				$foto =  $_FILES['prd_foto1'];	
-				$result = $auxp->ActualizacionProducto($p->id, $p->nombre, $p->descripcion , $p->precio, $foto );
+				$p->ActualizacionProducto($p->id, $p->nombre, $p->descripcion , $p->precio, $foto );
 			}
 		}
-		
-	}
-
-		if(isset($_POST['idProd'])){
 		if(($_POST['Elimina'] != 0))
 		{
-			$auxp = new Productos();
-
-			if($auxp-> existeProducto($_POST['idProd'])){
+			if($p-> existeProducto($_POST['idProd'])){
 				$p->id = $_POST['idProd'];	
-				$result = $auxp->EliminarProducto($p->id);
+				$p->EliminarProducto($p->id);
 			}
 		}
 		
 	}
 
+		
 
 	$v = new MisVentas();
 	$v->productos = $todosmios;
