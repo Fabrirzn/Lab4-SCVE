@@ -9,12 +9,12 @@
 <body>
 		<header>
 		<nav class="navbar navbar-light bg-dark">
-				<a class="navbar-brand text-white" href="home.php">				  
+				<a class="navbar-brand text-white" href="Menu">			  
 				  SCVE
 				</a>
 				<ul class "navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="MiCarrito.php">Carrito(<?php 
+						<a class="nav-link" href="Mi-Carrito">Carrito(<?php 
 							echo (empty($_SESSION['carrito']))?0:count($_SESSION['carrito']);
 							?>)</a>
 					</li>
@@ -24,18 +24,18 @@
 						Hola <?= $_SESSION['usuario'] ?>
 					</button>
 					<div class="dropdown-menu dropdown-menu-right">
-						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
-						<a href="PantallaMisCompras.php" class="dropdown-item">Mis Compras</a>
-						<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
-						<a href="PantallaMiPerfil.php" class="dropdown-item">Mi Pefil</a>
+						<a href="Vender" class="dropdown-item">Vender</a>
+						<a href="Mis-Compras" class="dropdown-item">Mis Compras</a>
+						<a href="Mis-Ventas" class="dropdown-item">Mis Ventas</a>
+						<a href="Mi-Perfil" class="dropdown-item">Mi Pefil</a>
 						<div class="dropdown-divider"></div>
-						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
+						<a href="Cerrar-Sesion" class="dropdown-item">Cerrar Sesion</a>
 					</div>
 				</div>	
 			  </nav>						
 		</header>
 		
-		<form action="home.php" method="GET" class="d-flex justify-content-center align-items-center form form-inline mb-5 p-2">
+		<form action="Menu" method="GET" class="d-flex justify-content-center align-items-center form form-inline mb-5 p-2">
 			<input type="text" class="form-control w-25" name="filtro" placeholder="Ingrese la descripcion del Artículo a buscar">
 			<button class="btn btn-info ml-3" id="btnBuscador">Buscar</button>
 			<button class="btn btn-warning ml-3" id="btnRestablecer">Restablecer Filtro</button>
@@ -48,7 +48,7 @@
 						<p><?= $p['nombre'] ?></p>
 						<p>$ <?= $p['precio'] ?></p>
 						
-						 <form action="MiCarrito.php" method="post">
+						 <form action="Mi-Carrito" method="post">
                                 <input type="hidden" name="id" id="id" value="<?php echo openssl_encrypt($p['id_productos'], COD, KEY); ?>">
                                 <input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt($p['nombre'], COD, KEY); ?>">
                                 <input type="hidden" name="precio" id="precio" value="<?php echo openssl_encrypt($p['precio'], COD, KEY); ?>">

@@ -12,7 +12,7 @@ require '../views/Pagar.php';
 require '../views/PagoOk.php';
 
 	if(!isset($_SESSION['logueado'])){
-		$v = header("Location: iniciosesion.php");
+		$v = header("Location: Iniciar-Sesion");
 		exit;
 	}
 	else {

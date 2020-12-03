@@ -9,7 +9,7 @@
 <body>
 		<header>
 		<nav class="navbar navbar-light bg-dark">
-				<a class="navbar-brand text-white" href="home.php">	
+				<a class="navbar-brand text-white" href="Menu">	
 				 
 				  SCVE
 				</a>
@@ -18,12 +18,12 @@
 						Hola <?= $_SESSION['usuario'] ?>
 					</button>
 					<div class="dropdown-menu dropdown-menu-right">
-						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
-						<a href="PantallaMisCompras.php" class="dropdown-item">Mis Compras</a>
-						<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
-						<a href="PantallaMiPerfil.php" class="dropdown-item">Mi Pefil</a>
+						<a href="Vender" class="dropdown-item">Vender</a>
+						<a href="Mis-Compras" class="dropdown-item">Mis Compras</a>
+						<a href="Mis-Ventas" class="dropdown-item">Mis Ventas</a>
+						<a href="Mi-Perfil" class="dropdown-item">Mi Pefil</a>
 						<div class="dropdown-divider"></div>
-						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
+						<a href="Cerrar-Sesion" class="dropdown-item">Cerrar Sesion</a>
 					</div>
 				</div>		
 			  </nav>						
@@ -33,7 +33,7 @@
 		<h1>Mis Ventas</h1>
 				<div class="row d-flex justify-content-center align-items-center">
 				<?php foreach($this->productos as $p) { ?>
-				<form action="PantallaMisVentas.php" class="formEditar" method="post" enctype="multipart/form-data">
+				<form action="Mis-Ventas" class="formEditar" method="post" enctype="multipart/form-data">
 
 						<div class="col-sm-12 col-md-12 col-lg-12">
 							<img width="100" id="fot" class="Img-thumbnail mt-3 mb-5" src="data:image/jpeg;base64,<?= base64_encode($p['fotos']) ?>">

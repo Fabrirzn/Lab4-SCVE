@@ -8,7 +8,7 @@ require '../views/Home.php';
 
 	session_start();
 	if(!isset($_SESSION['logueado'])){
-		header("Location: login.php");
+		header("Location: Iniciar-Sesion");
 		exit;
 	}
 

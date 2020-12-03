@@ -13,10 +13,10 @@
 				<div class="row">
 					<h1 class="m-4 text-white">Inicio De Sesion</h1>
 				</div>
-				<input type="text" name="usuario" value="usuario" class="form-control mb-3">
-				<input type="password" name="pass" value="contraseña" class="form-control mb-3">	
+				<input type="text" name="usuario" placeholder="usuario" class="form-control mb-3">
+				<input type="password" name="pass" placeholder="contraseña" class="form-control mb-3">	
 				<input type="submit" value="Entrar" class="btn btn-primary mb-3">
-				<a class="btn btn-warning mb-3" href="../controllers/altausuarios.php">Registrarse</a>
+				<a class="btn btn-warning mb-3" href="Alta-Usuarios">Registrarse</a>
 			</div>			
 		</form>
 	</div>

@@ -10,7 +10,7 @@ require '../views/Login.php';
 require '../views/Carrito.php';
 
 	if(!isset($_SESSION['logueado'])){
-		$v = header("Location: iniciosesion.php");
+		$v = header("Location: Iniciar-Sesion");
 		exit;
 	}
 	else {

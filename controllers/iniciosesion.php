@@ -18,11 +18,11 @@ if(count($_POST)> 0){
 	$in->IniciarSesion($_POST['usuario'], $_POST['pass']);
 
 	if(!isset($_SESSION['logueado'])){
-		header("Location: iniciosesion.php");
+		header("Location: Iniciar-Sesion");
 		exit;
 	}
 	else {
-		header("Location: Home.php");
+		header("Location: Menu");
 		exit;
 	}
 	//$v = header("Location: PantallaProductos.php");

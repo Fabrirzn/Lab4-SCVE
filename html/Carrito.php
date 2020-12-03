@@ -9,12 +9,12 @@
 <body>
 		<header>
 		<nav class="navbar navbar-light bg-dark">
-				<a class="navbar-brand text-white" href="home.php">			  
+				<a class="navbar-brand text-white" href="Menu">			  
 				  SCVE
 				</a>
 				<ul class "navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="MiCarrito.php">Carrito(<?php 
+						<a class="nav-link" href="Mi-Carrito">Carrito(<?php 
 							echo (empty($_SESSION['carrito']))?0:count($_SESSION['carrito']);
 							?>)</a>
 					</li>
@@ -24,12 +24,12 @@
 						Hola <?= $_SESSION['usuario'] ?>
 					</button>
 					<div class="dropdown-menu dropdown-menu-right">
-						<a href="PantallaVentas.php" class="dropdown-item">Vender</a>
-						<a href="PantallaMisCompras.php" class="dropdown-item">Mis Compras</a>
-						<a href="PantallaMisVentas.php" class="dropdown-item">Mis Ventas</a>
-						<a href="PantallaMiPerfil.php" class="dropdown-item">Mi Pefil</a>
+						<a href="Vender" class="dropdown-item">Vender</a>
+						<a href="Mis-Compras" class="dropdown-item">Mis Compras</a>
+						<a href="Mis-Ventas" class="dropdown-item">Mis Ventas</a>
+						<a href="Mi-Perfil" class="dropdown-item">Mi Pefil</a>
 						<div class="dropdown-divider"></div>
-						<a href="CerrarSesion.php" class="dropdown-item">Cerrar Sesion</a>
+						<a href="Cerrar-Sesion" class="dropdown-item">Cerrar Sesion</a>
 					</div>
 				</div>	
 			  </nav>						
@@ -59,7 +59,7 @@
 					            <td width="20%" class="text-center">$<?= $producto['precio'] ?></td>
 					            <td width="20%" class="text-center">$<?= number_format($producto['cantidad'] * $producto['precio'], 2) ?></td>
 					            <td width="5%">
-					                <form action="Micarrito.php" method="POST">
+					                <form action="Mi-Carrito" method="POST">
 					                    <input type="hidden" name="id" id="id" value="<?= openssl_encrypt($producto['id'], COD, KEY) ?>">
 					                    <button class="btn btn-danger" name="btnAccion" value="Eliminar" type="submit">Eliminar</button>
 					                </form>
@@ -76,7 +76,7 @@
 					        </tr>
 					        <tr>
 					            <td colspan="5">
-					                <form action="Pagar.php" method="post">
+					                <form action="Pagar" method="post">
 					                    <div class="alert alert-success" role="alert">
 					                        <div class="form-group">
 					                            <label for="email">Correo de contacto:</label>
