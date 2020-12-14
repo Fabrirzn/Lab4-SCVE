@@ -130,7 +130,7 @@ class Usuarios extends Model{
 
 		$usuarioaux = new Usuarios();
 
-		if(!$usuarioaux->existeUsuario($usuario)) throw("error Productos 1"); 
+		if(!$usuarioaux->existeUsuario($usuario)) throw new ValidacionUsuarios("error Productos 1"); 
 
 		$this->db->query("SELECT * FROM usuario WHERE usuario = '$usuario'");
 
@@ -187,3 +187,5 @@ class Usuarios extends Model{
 
 	}
 }
+
+class ValidacionUsuarios extends Exception {}

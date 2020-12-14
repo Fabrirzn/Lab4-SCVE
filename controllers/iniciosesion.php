@@ -12,8 +12,8 @@ if(count($_POST)> 0){
 	
 	$in = new Usuarios();
 
-	if(!isset($_POST['usuario'])) die("error ini 1");
-	if(!isset($_POST['pass'])) die("error ini 2");
+	if(!isset($_POST['usuario'])) throw new ValidacionUsuarios("error ini 1");
+	if(!isset($_POST['pass'])) throw new ValidacionUsuarios("error ini 2");
 
 	$in->IniciarSesion($_POST['usuario'], $_POST['pass']);
 

@@ -13,7 +13,7 @@ class Productos extends Model{
 	public function crearVenta($usuarioid, $nombre, $descripcion, $precio, $foto){
 
 		$usuarioaux = new Usuarios();		
-		if(!$usuarioaux->existeUsuario($usuarioid)) die("error Productos 1"); 
+		if(!$usuarioaux->existeUsuario($usuarioid)) throw new ValidacionProductos("error Productos 1"); 
 
 		$nombre = substr($nombre, 0, 50);
 		$nombre = $this->db->escape($nombre);
@@ -48,7 +48,7 @@ class Productos extends Model{
 	{
 		$usuarioaux = new Usuarios();	
 		if(!ctype_digit($precio)) die("error RegistroVentas 1"); 
-		if(!$usuarioaux->existeUsuario($usuarioid)) die("error RegistroVentas 2"); 
+		if(!$usuarioaux->existeUsuario($usuarioid)) throw new ValidacionProductos("error RegistroVentas 2"); 
 
 		$u = new Usuarios();
 		$now = date_create()->format('Y-m-d H:i:s');
@@ -63,7 +63,7 @@ class Productos extends Model{
 
 		$usuarioaux = new Usuarios();	
 		if(!ctype_digit($precio)) die("error Compras 1"); 
-		if(!$usuarioaux->existeUsuario($usuarioid)) die("error Compras 2"); 
+		if(!$usuarioaux->existeUsuario($usuarioid)) throw new ValidacionProductos("error Compras 2"); 
 		if(!ctype_digit($idProd)) die("error Compras 3"); 
 		if(!ctype_digit($cantidad)) die("error Compras 4"); 
 
@@ -88,7 +88,7 @@ class Productos extends Model{
 
 		$usuarioaux = new Usuarios();
 		//$id = $usuarioaux->getIdUsuario($usuario);
-		if(!$usuarioaux->existeUsuario($usuario)) throw("error Productos 1"); 
+		if(!$usuarioaux->existeUsuario($usuario)) throw new ValidacionProductos("error Productos 1"); 
 
 		$this->db->query("SELECT * FROM productos p INNER JOIN movimentos m on p.id_productos = m.id_producto WHERE m.id_usuario = '$usuario' and m.tipo_mov = 'COMPRA'");
 
@@ -102,7 +102,7 @@ class Productos extends Model{
 
 		$usuarioaux = new Usuarios();
 
-		if(!$usuarioaux->existeUsuario($usuario)) throw("error Productos 1"); 
+		if(!$usuarioaux->existeUsuario($usuario)) throw new ValidacionProductos("error Productos 1"); 
 
 		$this->db->query("SELECT * FROM productos p INNER JOIN movimentos m on p.id_productos = m.id_producto WHERE m.id_usuario = '$usuario' and m.tipo_mov = 'VENTA'");
 
@@ -164,3 +164,6 @@ class Productos extends Model{
 	}
 
 }
+
+class ValidacionProductos extends Exception {}
+

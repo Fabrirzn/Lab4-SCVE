@@ -28,12 +28,12 @@ require '../views/AltaProductoOk.php';
 		
  		$usuario = $_SESSION['usuario'];
 
-		if(!isset($_POST['nombre-producto'])) throw("error Pantalla Producto 1");
-		if(!isset($_POST['descripcion'])) throw("error Pantalla Producto 2");
-		if(!isset($_POST['precio'])) throw("error Pantalla Producto 3");
+		if(!isset($_POST['nombre-producto'])) throw new ValidacionProductos("error Pantalla Producto 1");
+		if(!isset($_POST['descripcion'])) throw new ValidacionProductos("error Pantalla Producto 2");
+		if(!isset($_POST['precio'])) throw new ValidacionProductos("error Pantalla Producto 3");
 		//if (is_uploaded_file($_FILES["prd_foto1"]["tmp_name"]))  die("error Pantalla Producto 4");
 		$foto =  $_FILES['prd_foto1'];
-		if(!isset($foto)) throw("error 4");
+		if(!isset($foto)) throw new ValidacionProductos("error 4");
 
 		$p->crearVenta($usuario, $_POST['nombre-producto'], $_POST['descripcion'], $_POST['precio'], $foto );
 
