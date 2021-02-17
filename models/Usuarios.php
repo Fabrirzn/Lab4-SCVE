@@ -110,7 +110,7 @@ class Usuarios extends Model{
 
 		public function existeUsuario($uid){
 		/*if(!ctype_digit($uid)) return false;
-		if($uid < 1) return false;*/
+		if($uid < 1) throw new ValidacionUsuarios('El id no es válido')*/
 
 		$this->db->query("SELECT * FROM usuario WHERE usuario = '$uid'");
 
@@ -154,28 +154,23 @@ class Usuarios extends Model{
 		$apellido = str_replace("_", "\_", $apellido);
 
 		if(!ctype_digit($dni)){
-			$error = 'El DNI debe ser un numero.';
-			return $error;
+			throw new ValidacionUsuarios('El DNI debe ser un numero.');
 		}
 
 		if(strlen($dni) != 8){
-			$error = 'El DNI debe tener 8 digitos';
-			return $error;
+			throw new ValidacionUsuarios('El DNI debe tener 8 digitos');
 		}
 
 		if(!ctype_digit($telefono)){
-			$error = 'El telefono debe ser un numero';
-			return $error;
+			throw new ValidacionUsuarios('El telefono debe ser un numero');
 		}
 
 		if(strlen($telefono) < 7 ){
-			$error = 'El telefono tiene que tener mas de 7 digitos ';
-			return $error;
+			throw new ValidacionUsuarios('El telefono tiene que tener mas de 7 digitos ');
 		}
 
 		if(strlen($telefono) > 13 ){
-			$error = 'El telefono tiene que tener menos de 13 digitos';
-			return $error;
+			throw new ValidacionUsuarios('El telefono tiene que tener menos de 13 digitos');
 		}
 
 		$direccion = substr($direccion, 0, 50);
