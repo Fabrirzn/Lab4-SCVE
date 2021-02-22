@@ -47,7 +47,7 @@ class Productos extends Model{
 	public function insertarRegistroVentas($usuarioid, $precio)
 	{
 		$usuarioaux = new Usuarios();	
-		if(!ctype_digit($precio)) die("error RegistroVentas 1"); 
+		if(!ctype_digit($precio)) throw new ValidacionProductos("error RegistroVentas 1"); 
 		if(!$usuarioaux->existeUsuario($usuarioid)) throw new ValidacionProductos("error RegistroVentas 2"); 
 
 		$u = new Usuarios();
@@ -62,10 +62,10 @@ class Productos extends Model{
 	public function comprar($usuarioid, $precio, $idProd, $cantidad){
 
 		$usuarioaux = new Usuarios();	
-		if(!ctype_digit($precio)) die("error Compras 1"); 
+		if(!ctype_digit($precio)) throw new ValidacionProductos("error Compras 1"); 
 		if(!$usuarioaux->existeUsuario($usuarioid)) throw new ValidacionProductos("error Compras 2"); 
-		if(!ctype_digit($idProd)) die("error Compras 3"); 
-		if(!ctype_digit($cantidad)) die("error Compras 4"); 
+		if(!ctype_digit($idProd)) throw new ValidacionProductos("error Compras 3"); 
+		if(!ctype_digit($cantidad)) throw new ValidacionProductos("error Compras 4"); 
 
 		$now = date_create()->format('Y-m-d H:i:s');
 		$this->db->query("INSERT INTO movimentos (cantidad, fecha, id_producto, id_usuario, precio, tipo_mov) VALUES ('$cantidad', '$now', '$idProd', '$usuarioid', '$precio', 'COMPRA')  ");
