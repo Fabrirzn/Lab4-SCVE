@@ -13,21 +13,19 @@ class Usuarios extends Model{
 
 	public function crearUsuario ($nombre, $apellido, $usuario, $dni, $telefono, $direccion, $contrasenia, $Contrasenia2){
 
+		if(!isset($nombre)) throw new ValidacionUsuarios("Error en CrearUsuario - Nombre");
 		$nombre = substr($nombre, 0, 50);
 		$nombre = $this->db->escape($nombre);
-		$nombre = str_replace("%", "\%", $nombre);
-		$nombre = str_replace("_", "\_", $nombre);
 
+		if(!isset($apellido)) throw new ValidacionUsuarios("Error en CrearUsuario - Apellido");
 		$apellido = substr($apellido, 0, 50);
 		$apellido = $this->db->escape($apellido);
-		$apellido = str_replace("%", "\%", $apellido);
-		$apellido = str_replace("_", "\_", $apellido);
 
+		if(!isset($usuario)) throw new ValidacionUsuarios("Error en CrearUsuario - Usuario");
 		$usuario = substr($usuario, 0, 50);
 		$usuario = $this->db->escape($usuario);
-		$usuario = str_replace("%", "\%", $usuario);
-		$usuario = str_replace("_", "\_", $usuario);
 
+		if(!isset($dni)) throw new ValidacionUsuarios("Error en CrearUsuario - Dni");
 		if(!ctype_digit($dni)){
 			$error = 'El DNI debe ser un numero.';
 			return $error;
@@ -38,6 +36,7 @@ class Usuarios extends Model{
 			return $error;
 		}
 
+		if(!isset($telefono)) throw new ValidacionUsuarios("Error en CrearUsuario - Telefono");
 		if(!ctype_digit($telefono)){
 			$error = 'El telefono debe ser un numero';
 			return $error;
@@ -53,29 +52,25 @@ class Usuarios extends Model{
 			return $error;
 		}
 
+		if(!isset($direccion)) throw new ValidacionUsuarios("Error en CrearUsuario - Direccion");
 		$direccion = substr($direccion, 0, 50);
 		$direccion = $this->db->escape($direccion);
-		$direccion = str_replace("%", "\%", $direccion);
-		$direccion = str_replace("_", "\_", $direccion);
 
+		if(!isset($contrasenia)) throw new ValidacionUsuarios("Error en CrearUsuario - Password");
 		$contrasenia = substr($contrasenia, 0, 50);
 		$contrasenia = $this->db->escape($contrasenia);
-		$contrasenia = str_replace("%", "\%", $contrasenia);
-		$contrasenia = str_replace("_", "\_", $contrasenia);
 
 		$contra = md5($contrasenia);
 
 		$Contrasenia2 = substr($Contrasenia2, 0, 50);
 		$Contrasenia2 = $this->db->escape($Contrasenia2);
-		$Contrasenia2 = str_replace("%", "\%", $Contrasenia2);
-		$Contrasenia2 = str_replace("_", "\_", $Contrasenia2);
 
 		$contra2 = md5($Contrasenia2);
 
 		if($contra == $contra2){
 
 			$this->db->query("INSERT INTO usuario (nombre, apellido, usuario, dni, telefono, direccion, password) 
-											VALUES ('$nombre', '$apellido', '$usuario', '$dni', '$telefono', '$direccion', '$contra')");
+											VALUES ('$nombre', '$apellido', '$usuario', $dni, $telefono, '$direccion', '$contra')");
 		}else{
 			echo "las contraseñas no coinciden ";
 		}	
@@ -85,15 +80,14 @@ class Usuarios extends Model{
 
 		session_start();
 		
+		if(!isset($usuario)) throw new ValidacionUsuarios("Error en IniciarSesion - Usuario");
 		$usuario = substr($usuario, 0, 50);
 		$usuario = $this->db->escape($usuario);
-		$usuario = str_replace("%", "\%", $usuario);
-		$usuario = str_replace("_", "\_", $usuario);
 
+		if(!isset($password)) throw new ValidacionUsuarios("Error en IniciarSesion - password");
 		$password = substr($password, 0, 50);
 		$password = $this->db->escape($password);
-		$password = str_replace("%", "\%", $password);
-		$password = str_replace("_", "\_", $password);
+
 		$pass = md5($password);
 
 		$this->db->query("SELECT * FROM usuario WHERE usuario = '$usuario' and password = '$pass' LIMIT 1");
@@ -109,8 +103,7 @@ class Usuarios extends Model{
 	}
 
 		public function existeUsuario($uid){
-		/*if(!ctype_digit($uid)) return false;
-		if($uid < 1) throw new ValidacionUsuarios('El id no es válido')*/
+		if(!isset($uid)) throw new ValidacionUsuarios('Error en existeUsuario - El usuario no es válido');
 
 		$this->db->query("SELECT * FROM usuario WHERE usuario = '$uid'");
 
@@ -120,6 +113,8 @@ class Usuarios extends Model{
 	}
 
 	public function getIdUsuario($nombreUsuario){
+		
+		if(!isset($nombreUsuario)) throw new ValidacionUsuarios("Error en getIdUsuario - Usuario");
 		$this->db->query("SELECT id_usuario FROM usuario WHERE  usuario = '$nombreUsuario'");
 		$aux = $this->db->fetch();
 		return $aux['id_usuario'];
@@ -130,7 +125,7 @@ class Usuarios extends Model{
 
 		$usuarioaux = new Usuarios();
 
-		if(!$usuarioaux->existeUsuario($usuario)) throw new ValidacionUsuarios("error Productos 1"); 
+		if(!$usuarioaux->existeUsuario($usuario)) throw new ValidacionUsuarios("Error en MisDatos - Usuario"); 
 
 		$this->db->query("SELECT * FROM usuario WHERE usuario = '$usuario'");
 
@@ -141,18 +136,19 @@ class Usuarios extends Model{
 
 	public function ActualizarPerfil($usuarioid, $nombre, $apellido, $dni, $telefono, $direccion){ 
 
-		if(!ctype_digit($usuarioid)) return false;
+		if(!isset($usuarioid)) throw new ValidacionUsuarios("Error en Actualizar Perfil - IdUsuario");
+		if(!ctype_digit($usuarioid)) throw new ValidacionUsuarios("Error en Actualizar Perfil - IdUsuario No Numerico");;
 		if($usuarioid < 0) return false;
 
+		if(!isset($nombre)) throw new ValidacionUsuarios("Error en Actualizar Perfil - Nombre");
 		$nombre = substr($nombre, 0, 50);
 		$nombre = $this->db->escape($nombre);
-		$nombre = str_replace("%", "\%", $nombre);
-		$nombre = str_replace("_", "\_", $nombre);
+
+		if(!isset($apellido)) throw new ValidacionUsuarios("Error en Actualizar Perfil - Apellido");
 		$apellido = substr($apellido, 0, 50);
 		$apellido = $this->db->escape($apellido);
-		$apellido = str_replace("%", "\%", $apellido);
-		$apellido = str_replace("_", "\_", $apellido);
 
+		if(!isset($dni)) throw new ValidacionUsuarios("EError en Actualizar Perfil - Apellido");
 		if(!ctype_digit($dni)){
 			throw new ValidacionUsuarios('El DNI debe ser un numero.');
 		}
@@ -161,6 +157,7 @@ class Usuarios extends Model{
 			throw new ValidacionUsuarios('El DNI debe tener 8 digitos');
 		}
 
+		if(!isset($telefono)) throw new ValidacionUsuarios("EError en Actualizar Perfil - Telefono");
 		if(!ctype_digit($telefono)){
 			throw new ValidacionUsuarios('El telefono debe ser un numero');
 		}
@@ -173,12 +170,11 @@ class Usuarios extends Model{
 			throw new ValidacionUsuarios('El telefono tiene que tener menos de 13 digitos');
 		}
 
+		if(!isset($direccion)) throw new ValidacionUsuarios("EError en Actualizar Perfil - Direccion");
 		$direccion = substr($direccion, 0, 50);
 		$direccion = $this->db->escape($direccion);
-		$direccion = str_replace("%", "\%", $direccion);
-		$direccion = str_replace("_", "\_", $direccion);
 
-		$this->db->query("UPDATE usuario set nombre = '$nombre', apellido = '$apellido', dni = '$dni', telefono = '$telefono', direccion = 'direccion' WHERE id_usuario = '$usuarioid' ");
+		$this->db->query("UPDATE usuario set nombre = '$nombre', apellido = '$apellido', dni = $dni, telefono = $telefono, direccion = 'direccion' WHERE id_usuario = $usuarioid ");
 
 	}
 }

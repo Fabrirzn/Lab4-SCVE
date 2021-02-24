@@ -5,6 +5,6 @@
 </head>
 <body>
 		<h1>Alta de Usuario ha sido exitosa!</h1>
-		<a href="iniciosesion.php">Volver</a>
+		<a href="Iniciar-Sesion"">Volver</a>
 </body>
 </html>

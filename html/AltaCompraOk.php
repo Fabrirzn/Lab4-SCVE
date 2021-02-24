@@ -5,6 +5,6 @@
 </head>
 <body>
 		<h1>La Compra fue Realizada con Éxito!!!</h1>
-		<a href="Home.php">Volver</a>
+		<a href="Mis-Compras">Volver</a>
 </body>
 </html>

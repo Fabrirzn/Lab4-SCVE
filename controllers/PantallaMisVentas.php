@@ -20,9 +20,7 @@ require '../views/MisVentas.php';
 
 	$p = new Productos();
 	$usuario = $_SESSION['usuario'];
-	$todosmios = $p->MiosTodos($usuario);
-
-
+	//$todosmios = $p->MiosTodos($usuario);
 
 
 	if(isset($_POST['idProd'])){
@@ -34,7 +32,7 @@ require '../views/MisVentas.php';
 				$p->nombre = $_POST['nombre-producto'];
 				$p->descripcion = $_POST['descripcion'];
 				$p->precio = $_POST['precio'];
-				$foto =  $_FILES['prd_foto1'];	
+				$foto =  $_FILES['prd_foto1'];					
 				$p->ActualizacionProducto($p->id, $p->nombre, $p->descripcion , $p->precio, $foto );
 			}
 		}
@@ -50,7 +48,7 @@ require '../views/MisVentas.php';
 
 		
 
-	$v = new MisVentas();
-	$v->productos = $todosmios;
+	//$v = new MisVentas();
+	$v->productos = $p->MiosTodos($usuario);
 
  $v->render();

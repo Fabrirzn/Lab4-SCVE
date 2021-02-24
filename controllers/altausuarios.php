@@ -6,6 +6,7 @@ require '../framework/framework.php';
 require '../models/Usuarios.php';
 require '../views/registrarse.php';
 require '../views/AltaUsuarioOk.php';
+require '../views/AltaUsuarioError.php';
 
 
 	if(isset($_POST['Contrasenia']) and isset($_POST['Contrasenia2']) and $_POST['Usuario'])
@@ -19,10 +20,15 @@ require '../views/AltaUsuarioOk.php';
 		if(!isset($_POST['Telefono'])) throw new ValidacionUsuarios("error altausuario 4");
 		if(!isset($_POST['Direccion'])) throw new ValidacionUsuarios("error altausuario 5");
 
-		$us->crearUsuario($_POST['Nombre'], $_POST['Apellido'], $_POST['Usuario'], $_POST['DNI'], $_POST['Telefono'], $_POST['Direccion'], $_POST['Contrasenia'], $_POST['Contrasenia2'] );
-			
-		$v = new AltaUsuarioOk();
+		$error = $us->crearUsuario($_POST['Nombre'], $_POST['Apellido'], $_POST['Usuario'], (int)$_POST['DNI'], (int)$_POST['Telefono'], $_POST['Direccion'], $_POST['Contrasenia'], $_POST['Contrasenia2'] );
+		if(isset($error)){
+			$v = new AltaUsuarioError();	
 		}
+		else {
+			$v = new AltaUsuarioOk();
+		}
+		
+	}
 		
 
 	}

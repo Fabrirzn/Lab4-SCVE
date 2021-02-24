@@ -2,5 +2,5 @@
 
 class AltaUsuarioOk extends View {
 
-	
+
 }

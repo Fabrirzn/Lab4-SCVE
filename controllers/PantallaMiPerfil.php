@@ -28,8 +28,8 @@ require '../views/MiPerfil.php';
 				$u->id = $_POST['idUsu'];
 				$u->nombre = $_POST['nombre-usuario'];
 				$u->apellido = $_POST['apellido'];
-				$u->dni = $_POST['dni'];	
-				$u->telefono = $_POST['telefono'];	
+				$u->dni = (int)$_POST['dni'];	
+				$u->telefono = (int)$_POST['telefono'];	
 				$u->direccion = $_POST['direccion'];	
 				$result = $u->ActualizarPerfil($u->id, $u->nombre, $u->apellido , $u->dni, $u->telefono, $u->direccion );
 		}
